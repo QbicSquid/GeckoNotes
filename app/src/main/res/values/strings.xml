@@ -1,4 +1,56 @@
 <resources>
     <string name="app_name">Notes</string>
+    <string name="menu_groups">Groups</string>
+    <string name="menu_tasks">Tasks</string>
+    <string name="menu_home">Home</string>
+    <string name="home_recent">Recents</string>
+
+    <string name="nav_search">Search</string>
+    <string name="sort_date">Sort by date</string>
+    <string name="sort_most_recent">Sort by most recent</string>
+    <string name="sort_a_to_z">Sort by a-z</string>
+    <string name="sort_by_create">Sort by Last Created</string>
+    <string name="sort_by_update">Sort by Last Updated</string>
+
+    <string name="note_group">Group</string>
+    <string name="edit_note_name">Note name</string>
+    <string name="add_text">Text</string>
+    <string name="add_voice">voice</string>
+    <string name="add_picture">Picture</string>
+    <string name="add_quiz">Quiz</string>
+
+    <string name="text_text_box">Text Box</string>
+    <string name="text_list">Text List</string>
+    <string name="text_table">Table</string>
+
+    <string name="text_add_text">+ Add Text</string>
+    <string name="text_add_list">+ Add List</string>
+    <string name="text_add_Table">Notes</string>
+
+    <string name="create_picture">Creating Picture Card</string>
+    <string name="add_title">+ Add Title</string>
+    <string name="add_description">+ Add Description</string>
+    <string name="Create_voice_note">Creating Voice Note</string>
+
+    <string name="quiz">Quiz</string>
+    <string name="quiz_question">Add Question</string>
+    <string name="quiz_checkbox">Checkbox</string>
+    <string name="quiz_radio">Radio</string>
+    <string name="quiz_written">Written</string>
+    <string name="quiz_answer">Add Answer</string>
+    <string name="quiz_new_question">New Question</string>
+
+    <string name="view_picture">Viewing Picture Card</string>
+    <string name="view_voice">Viewing Voice Notes</string>
+
+    <string name="quiz_submit">Submit</string>
+    <string name="quiz_history">Show History</string>
+    <string name="Score_history">Score History</string>
+    <string name="delete_history">Delete History</string>
+    <string name="task_name">New Task</string>
+    <string name="task_description">Description</string>
+    <string name="task_date">Date</string>
+    <string name="task_time">Time</string>
+    <string name="task_remind">Remind Me</string>
 
 </resources>
