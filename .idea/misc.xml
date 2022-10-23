@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quiz.xml" value="0.176" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quiz_set.xml" value="0.24365942028985507" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quizq.xml" value="0.24365942028985507" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_blank.xml" value="0.12537993920972645" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_radiobtn_quiz.xml" value="0.25311203319502074" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/select_type.xml" value="0.2" />
       </map>
     </option>
   </component>
