@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,10 @@ import android.widget.Toast;
 
 
 public class RadiobtnQuiz extends Fragment {
+
+    CheckboxAns checkboxAnsAction;
+    RadiobtnAns radiobtnAnsAction;
+    WrittenAns writtenAnsAction;
 
     String[] items = {"Checkbox", "Radio", "Written"};
 
@@ -38,8 +43,8 @@ public class RadiobtnQuiz extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_radiobtn_quiz, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_radiobtn_quiz, container, false);
+
     }
 
 
@@ -49,7 +54,12 @@ public class RadiobtnQuiz extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         autoCompleteTxt = view.findViewById(R.id.auto_complete_txt);
-        adapterItems = new ArrayAdapter<String>(getActivity(),R.layout.select_type,items);
+
+        checkboxAnsAction = new CheckboxAns();
+        radiobtnAnsAction = new RadiobtnAns();
+        writtenAnsAction = new WrittenAns();
+
+        ArrayAdapter<String> adapterItems = new ArrayAdapter<>(getActivity(),R.layout.select_type,items);
         autoCompleteTxt.setAdapter(adapterItems);
 
 
@@ -57,10 +67,27 @@ public class RadiobtnQuiz extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(adapterItems.getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(adapterItems.getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        selectFragment(checkboxAnsAction);
+                        break;
+                    case 1:
+                        selectFragment(radiobtnAnsAction);
+                        break;
+                    case 2:
+                        selectFragment(writtenAnsAction);
+                        break;
+                }
             }
         });
 
+    }
+
+    private void selectFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.ansType,fragment);
+        fragmentTransaction.commit();
     }
 
 }
