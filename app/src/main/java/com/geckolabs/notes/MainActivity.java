@@ -27,4 +27,5 @@ public class MainActivity extends AppCompatActivity {
         for (String s : courses)
             Log.d("LOGGG: ", s);
     }
+
 }
