@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class RadiobtnQuiz extends Fragment {
 
-    String[] items = {"Checkbox", "Radio"};
+    String[] items = {"Checkbox", "Radio", "Written"};
 
     AutoCompleteTextView autoCompleteTxt;
 
@@ -38,8 +38,8 @@ public class RadiobtnQuiz extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_radiobtn_quiz, container, false);
-
+        View view = inflater.inflate(R.layout.fragment_radiobtn_quiz, container, false);
+        return view;
     }
 
 
