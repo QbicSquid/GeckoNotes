@@ -28,13 +28,11 @@ public class RadiobtnQuiz extends Fragment {
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +51,7 @@ public class RadiobtnQuiz extends Fragment {
         autoCompleteTxt = view.findViewById(R.id.auto_complete_txt);
         adapterItems = new ArrayAdapter<String>(getActivity(),R.layout.select_type,items);
         autoCompleteTxt.setAdapter(adapterItems);
+
 
         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
