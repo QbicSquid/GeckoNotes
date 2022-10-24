@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,15 +19,18 @@ public class Quizq extends AppCompatActivity {
 
         btn = findViewById(R.id.quizQ);
 
-        btn.setOnClickListener(new View.OnClickListener(){
+        //addQuiz.setOnClickListener((v)-> startActivity(new Intent(QuizNewSet.this,Quizq.class)));
+        btn.setOnClickListener((v)-> startActivity(new Intent(Quizq.this, NewQuizQ.class)));
 
-            @Override
-            public void onClick(View view) {
-
-                Fragment fragment = new RadiobtnQuiz();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container,fragment).commit();
-            }
-        });
+//        btn.setOnClickListener(new View.OnClickListener(){
+//
+//            @Override
+//            public void onClick(View view) {
+//
+//                Fragment fragment = new RadiobtnQuiz();
+//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.container,fragment).commit();
+//            }
+//        });
     }
 }
