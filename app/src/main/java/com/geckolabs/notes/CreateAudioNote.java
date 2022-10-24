@@ -53,7 +53,7 @@ public class CreateAudioNote extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("Log1","in On click");
-                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString());
+                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),"test.mp3");
             }
         });
 

@@ -38,7 +38,7 @@ public class MediaNotesDB extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(query);
 
     }
-    public void addNewAudioNote(String title,String description) {
+    public void addNewAudioNote(String title,String description,String mediaPath) {
 
         // on below line we are creating a variable for
         // our sqlite database and calling writable method
@@ -55,7 +55,7 @@ public class MediaNotesDB extends SQLiteOpenHelper {
         values.put(DESCRIPTION,description);
         values.put(TYPE,"audio");
         values.put(NOTE_ID,1);
-        values.put(MEDIA_FILE,"test.mp3");
+        values.put(MEDIA_FILE,mediaPath);
 
         // after adding all values we are passing
         // content values to our table.
