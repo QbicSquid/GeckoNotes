@@ -34,6 +34,7 @@ public class MediaNotesDB extends SQLiteOpenHelper {
                 + NOTE_ID + " INTEGER,"
                 + MEDIA_FILE + " TEXT);";
 
+
         sqLiteDatabase.execSQL(query);
 
     }
