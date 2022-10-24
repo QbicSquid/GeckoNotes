@@ -48,6 +48,7 @@ public class CreateAudioNote extends Fragment {
         txtAddAudioDescription = view.findViewById(R.id.txtAddAudioDescription);
         btnAudioNoteDone = view.findViewById(R.id.btnAudioNoteDone);
 //        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString());
+
         btnAudioNoteDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
