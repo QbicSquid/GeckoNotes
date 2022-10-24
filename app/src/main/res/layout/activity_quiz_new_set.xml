@@ -5,31 +5,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:padding="16dp"
     tools:context=".QuizNewSet">
 
     <RelativeLayout
+        android:id="@+id/quizzes"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
         <TextView
+            android:id="@+id/quiz_set_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/quiz_set_title"
-            android:text="Add New Quiz"
-            android:textSize="32sp"
+            android:gravity="center"
+            android:text="Quiz"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
-
+        <ImageButton
+            android:id="@+id/save_quiz_Set"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_baseline_save_24" />
 
     </RelativeLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_baseline_add_circle_outline_24"/>
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <LinearLayout
+        android:id="@+id/quizList"
+        android:layout_width="379dp"
+        android:layout_height="511dp"
+        android:layout_alignBottom="@id/add_quiz"
+        android:layout_marginBottom="69dp"
+        android:orientation="vertical"></LinearLayout>
 </RelativeLayout>

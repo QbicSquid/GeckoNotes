@@ -9,14 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.geckolabs.dao.QuizDAO;
 
 
 public class WrittenAns extends Fragment {
 
     EditText editAns;
-    ImageButton saveWrtAns;
+    Button btn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,18 +38,25 @@ public class WrittenAns extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        QuizDAO db = new QuizDAO(getActivity());
         editAns = view.findViewById(R.id.writtenAns);
-        saveWrtAns = view.findViewById(R.id.saveWrittenAns);
-        
-        saveWrtAns.setOnClickListener((v) -> saveNote());
+        btn = view.findViewById(R.id.ansCorrect);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.addAnswer(editAns.getText().toString(), true);
+            }
+        });
+
 
     }
 
-    void saveNote() {
-        String WriteAns = editAns.getText().toString();
-        if(WriteAns==null || WriteAns.isEmpty()){
-            editAns.setError("Answer is required");
-            return;
-        }
-    }
+//    void saveNote() {
+//        String WriteAns = editAns.getText().toString();
+//        if(WriteAns==null || WriteAns.isEmpty()){
+//            editAns.setError("Answer is required");
+//            return;
+//        }
+//    }
 }

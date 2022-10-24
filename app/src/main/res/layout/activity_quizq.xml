@@ -1,23 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Quizq"
-    android:id="@+id/container">
+    android:padding="16dp"
+    tools:context=".Quizq">
 
-    <Button
-        android:layout_width="244dp"
+    <RelativeLayout
+        android:id="@+id/questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/question_set_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Quiz Title"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/save_quiz_Set"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_baseline_save_24" />
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/quizQ"
-        android:layout_height="44dp"
-        android:text="@string/quiz_new_question"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.967"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <LinearLayout
+        android:id="@+id/quesList"
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/questions"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="67dp"
+        android:orientation="vertical"></LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

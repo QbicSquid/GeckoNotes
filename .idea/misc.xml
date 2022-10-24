@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_main.xml" value="0.152" />
-        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_new_quiz_q.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_new_quiz_q.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quiz.xml" value="0.176" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quiz_new_set.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_quiz_set.xml" value="0.24365942028985507" />
@@ -17,7 +17,9 @@
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_radiobtn_ans.xml" value="0.13677536231884058" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_radiobtn_quiz.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_second.xml" value="0.182518115942029" />
-        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_written_ans.xml" value="0.12335359675785208" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_written_ans.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/recycler_quiz_set.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/select_element.xml" value="0.12681159420289856" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/select_type.xml" value="0.2" />
       </map>
     </option>
