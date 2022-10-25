@@ -2,10 +2,17 @@ package com.geckolabs.notes;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,13 +24,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.geckolabs.dao.MediaNotesDB;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PictureNoteActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
@@ -36,12 +44,29 @@ public class PictureNoteActivity extends AppCompatActivity {
     EditText txtAddAudioDescription;
     Button btnAudioNoteDone;
 
+    public static final int CAMERA_PERM_CODE = 101;
+    public static final int CAMERA_REQUEST_CODE = 102;
+    ImageButton cameraBtn;
+    String currentPhotoPath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_note);
 
         picView = findViewById(R.id.picView);
+
+        // Open Camera
+        cameraBtn = findViewById(R.id.btnCamaraPic);
+        cameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                verifyPermissions();
+            }
+        });
+
+
         photoButton = findViewById(R.id.btnTakePic);
         photoButton.setOnClickListener(new  View.OnClickListener()
         {
@@ -64,7 +89,8 @@ public class PictureNoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("Log1","in On click");
-                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
+//                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
+                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath);
             }
         });
     }
@@ -89,6 +115,7 @@ public class PictureNoteActivity extends AppCompatActivity {
                     if (data != null
                             && data.getData() != null) {
                         selectedImageUri = data.getData();
+                        File imageFile = new File(String.valueOf(selectedImageUri));
                         Log.d("LogUri", String.valueOf(selectedImageUri));
 
                         try {
@@ -110,59 +137,150 @@ public class PictureNoteActivity extends AppCompatActivity {
         txtAddAudioTitle = view.findViewById(R.id.txtAddAudioTitle);
         txtAddAudioDescription = view.findViewById(R.id.txtAddAudioDescription);
         btnAudioNoteDone = view.findViewById(R.id.btnAudioNoteDone);
-        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
+//        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
+        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath);
 
     }
-//line breaker......................
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+//Line Breaker...............................
+    private void verifyPermissions(){
+        String[] permissions = {Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA};
 
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[0]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[1]) == PackageManager.PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this.getApplicationContext(),
+                permissions[2]) == PackageManager.PERMISSION_GRANTED){
+            dispatchTakePictureIntent();
+        }else{
+            ActivityCompat.requestPermissions(this,
+                    permissions,
+                    CAMERA_PERM_CODE);
+        }
+    }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
-            picView.setImageBitmap(imageBitmap);
-//            galleryAddPic();
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == CAMERA_PERM_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                dispatchTakePictureIntent();
+            } else {
+                Toast.makeText(this, "Camera Permission is Required to Use camera.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    String mCurrentPhotoPath;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CAMERA_REQUEST_CODE){
+            if(resultCode == Activity.RESULT_OK){
+                File f = new File(currentPhotoPath);
+                picView.setImageURI(Uri.fromFile(f));
+                Log.d("tag", "ABsolute Url of Image is " + Uri.fromFile(f));
+
+                Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                Uri contentUri = Uri.fromFile(f);
+                mediaScanIntent.setData(contentUri);
+                this.sendBroadcast(mediaScanIntent);
+            }
+
+        }
+    }
 
     private File createImageFile() throws IOException {
-        File storageDir = Environment.getExternalStorageDirectory();
+        // Create an image file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                "example",  /* prefix */
+                imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-        mCurrentPhotoPath = image.getAbsolutePath();
+
+        // Save a file: path for use with ACTION_VIEW intents
+        currentPhotoPath = image.getAbsolutePath();
+        Log.d("PATH",currentPhotoPath);
         return image;
     }
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
             File photoFile = null;
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
-                ex.printStackTrace();
+
             }
+            // Continue only if the File was successfully created
             if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                Uri photoURI = FileProvider.getUriForFile(this,
+                        "com.example.android.fileproviderNote",
+                        photoFile);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, CAMERA_REQUEST_CODE);
             }
         }
     }
 
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
-    }
+
+//line breaker......................
+//    static final int REQUEST_IMAGE_CAPTURE = 1;
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+////            Bundle extras = data.getExtras();
+//            Bitmap imageBitmap = (Bitmap) data.getExtras().get("data");
+//            picView.setImageBitmap(imageBitmap);
+////            galleryAddPic();
+//        }
+//    }
+//
+//    String mCurrentPhotoPath;
+//
+//    private File createImageFile() throws IOException {
+//        File storageDir = Environment.getExternalStorageDirectory();
+//        File image = File.createTempFile(
+//                "example",  /* prefix */
+//                ".jpg",         /* suffix */
+//                storageDir      /* directory */
+//        );
+//        mCurrentPhotoPath = image.getAbsolutePath();
+//        return image;
+//    }
+//
+//    private void dispatchTakePictureIntent() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//            File photoFile = null;
+//            try {
+//                photoFile = createImageFile();
+//            } catch (IOException ex) {
+//                ex.printStackTrace();
+//            }
+//            if (photoFile != null) {
+//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(photoFile));
+//                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//            }
+//        }
+//    }
+//
+//    private void galleryAddPic() {
+//        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//        File f = new File(mCurrentPhotoPath);
+//        Uri contentUri = Uri.fromFile(f);
+//        mediaScanIntent.setData(contentUri);
+//        this.sendBroadcast(mediaScanIntent);
+//    }
 
 
 
