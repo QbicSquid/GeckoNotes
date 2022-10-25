@@ -22,7 +22,7 @@ public class AddTextActivity extends AppCompatActivity {
 
         Save = findViewById(R.id.txtsavebtn);
         Back = findViewById(R.id.txtbkbtn);
-
+        editTextTextMultiLine =  findViewById(R.id.editTextTextMultiLine);
         Save.setOnClickListener((v) -> {
 
                 NoteModel noteModel;
@@ -36,8 +36,8 @@ public class AddTextActivity extends AppCompatActivity {
                 }
 
                 TextDB TextDB = new TextDB(AddTextActivity.this);
-                TextDB.addNewNote(noteModel);
-//                Toast.makeText(AddTextActivity.this, "Success" + success, Toast.LENGTH_SHORT).show();
+                boolean success = TextDB.addNewNote(noteModel);
+                Toast.makeText(AddTextActivity.this, "Success" + success, Toast.LENGTH_SHORT).show();
         });
 
 

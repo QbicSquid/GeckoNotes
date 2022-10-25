@@ -2,13 +2,11 @@ package com.geckolabs.notes;
 
 public class NoteModel {
     private int id;
-//    private String type;
     private String text;
 
     //constructors
     public NoteModel(int id, String text) {
         this.id = id;
-//        this.type = type;
         this.text = text;
     }
 
@@ -35,16 +33,6 @@ public class NoteModel {
 
         this.id = id;
     }
-
-//    public String getType() {
-//
-//        return type;
-//    }
-//
-//    public void setType(String type) {
-//
-//        this.type = type;
-//    }
 
     public String getText() {
 
