@@ -2,6 +2,7 @@ package com.geckolabs.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -64,6 +65,19 @@ public class MediaNotesDB extends SQLiteOpenHelper {
         // at last we are closing our
         // database after adding database.
         db.close();
+    }
+    public String[] getPicNote(Integer id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME +" WHERE ID ="+ id;
+        Cursor cursor = db.rawQuery(query, null);
+        String[] courses = new String[cursor.getCount()];
+
+        for (int i = 0; i < cursor.getCount(); i++) {
+            cursor.move(1);
+            courses[i] = cursor.getString(0);
+        }
+
+        return courses;
     }
 
     @Override

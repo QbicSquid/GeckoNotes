@@ -9,10 +9,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.geckolabs.dao.MediaNotesDB;
 
 public class viewPictureNote extends Fragment {
-
-
+    TextView txtTitle;
+    TextView txtDescription;
+    ImageView imgView;
+    Integer picNoteId;
 
     public viewPictureNote() {
         // Required empty public constructor
@@ -34,6 +40,13 @@ public class viewPictureNote extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        
+        MediaNotesDB db = new MediaNotesDB(getActivity());
+        txtTitle = view.findViewById(R.id.txtTitle);
+        txtDescription = view.findViewById(R.id.txtDescription);
+        imgView = view.findViewById(R.id.imgView);
+        picNoteId = 15;
+        db.getPicNote(picNoteId);
+
+
     }
 }

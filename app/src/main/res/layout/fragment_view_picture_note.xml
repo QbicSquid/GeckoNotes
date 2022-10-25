@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.777" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgView"
         android:layout_width="382dp"
         android:layout_height="241dp"
         app:layout_constraintBottom_toTopOf="@+id/txtDescription"
@@ -38,7 +38,7 @@
         android:text="Title"
         android:textAlignment="center"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/imgView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
