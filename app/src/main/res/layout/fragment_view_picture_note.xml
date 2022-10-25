@@ -2,14 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:background="@drawable/view_picnote_frame"
+    android:backgroundTint="?android:attr/colorFocusedHighlight"
     tools:context=".viewPictureNote">
+
 
     <TextView
         android:id="@+id/txtDescription"
-        android:layout_width="329dp"
-        android:layout_height="170dp"
+        android:layout_width="276dp"
+        android:layout_height="93dp"
         android:text="Description"
         android:textAlignment="viewStart"
         android:textSize="24sp"
@@ -17,19 +20,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.885" />
 
     <ImageView
         android:id="@+id/imgView"
-        android:layout_width="382dp"
-        android:layout_height="241dp"
+        android:layout_width="wrap_content"
+        android:layout_height="222dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/view_picnote_frame"
         app:layout_constraintBottom_toTopOf="@+id/txtDescription"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        tools:src="@tools:sample/backgrounds/scenic"
+        android:backgroundTint="@color/white"/>
 
     <TextView
         android:id="@+id/txtTitle"
@@ -40,7 +44,9 @@
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/imgView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.743" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

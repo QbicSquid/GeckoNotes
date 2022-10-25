@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class AudioNotesActivity extends AppCompatActivity {
 
@@ -14,11 +15,12 @@ public class AudioNotesActivity extends AppCompatActivity {
 
         if(findViewById(R.id.Container)!=null)
         {
+            Log.d("InAcc","check");
             if(savedInstanceState!=null){
                 return;
             }
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().add(R.id.Container,new CreateAudioNote(),null).commit();
+            fragmentManager.beginTransaction().add(R.id.Container,new viewPictureNote(),null).commit();
         }
     }
 }

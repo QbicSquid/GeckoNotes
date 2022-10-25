@@ -6,8 +6,11 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.geckolabs.notes.PicNoteModel;
 
 public class MediaNotesDB extends SQLiteOpenHelper {
 
@@ -71,13 +74,39 @@ public class MediaNotesDB extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_NAME +" WHERE ID ="+ id;
         Cursor cursor = db.rawQuery(query, null);
         String[] courses = new String[cursor.getCount()];
+        Log.d("InDAO","check");
 
-        for (int i = 0; i < cursor.getCount(); i++) {
+        for (int i = 0; i < 6; i++) {
             cursor.move(1);
             courses[i] = cursor.getString(0);
+//            courses[i] = cursor.getString(1);
+            Log.d("InLoop",courses[i]);
         }
 
         return courses;
+    }
+    // Get a single Note
+    public PicNoteModel getSinglePicNote(int id){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME,new String[]{ID,TITLE,DESCRIPTION,TYPE, NOTE_ID,MEDIA_FILE},
+                ID + "= ?",new String[]{String.valueOf(id)}
+                ,null,null,null);
+
+        PicNoteModel picNoteModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            picNoteModel = new PicNoteModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3),
+                    cursor.getInt(4),
+                    cursor.getString(5)
+            );
+            return picNoteModel;
+        }
+        return null;
     }
 
     @Override
