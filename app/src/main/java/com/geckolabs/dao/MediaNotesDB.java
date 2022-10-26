@@ -108,6 +108,31 @@ public class MediaNotesDB extends SQLiteOpenHelper {
         }
         return null;
     }
+    // Update a single PicNote
+    public int updateSinglePicNote(PicNoteModel picNoteModel){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(TITLE,picNoteModel.getTitle());
+        contentValues.put(DESCRIPTION,picNoteModel.getDescription());
+//        contentValues.put(TYPE,"audio");
+//        contentValues.put(NOTE_ID,1);
+//        contentValues.put(MEDIA_FILE,mediaPath);
+
+        int status = db.update(TABLE_NAME,contentValues,ID +" =?",
+                new String[]{String.valueOf(picNoteModel.getId())});
+
+        db.close();
+        return status;
+    }
+
+    // Delete item
+    public void deletePicNote(int id){
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_NAME,"id =?",new String[]{String.valueOf(id)});
+        db.close();
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

@@ -57,9 +57,9 @@ public class viewPictureNote extends Fragment {
         picNoteId = 15;
 
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);
-        Log.d("des",picNoteModel.getDescription());
-        Log.d("title",picNoteModel.getTitle());
-        Log.d("path",picNoteModel.getMediaPath());
+//        Log.d("des",picNoteModel.getDescription());
+//        Log.d("title",picNoteModel.getTitle());
+//        Log.d("path",picNoteModel.getMediaPath());
 
         String stringImageUri = "file://"+picNoteModel.getMediaPath();
         selectedImageUri= Uri.parse(stringImageUri);

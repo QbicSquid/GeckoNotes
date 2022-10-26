@@ -8,10 +8,11 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/drawable/view_picnote_frame.xml" value="0.1185" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_audio_notes.xml" value="0.2105978260869565" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_main.xml" value="0.2105978260869565" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_media_testing.xml" value="0.2105978260869565" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_picture_note.xml" value="0.2105978260869565" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_create_audio_note.xml" value="0.264" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_view_audio_note.xml" value="0.2105978260869565" />
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_view_picture_note.xml" value="0.2" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/fragment_view_picture_note.xml" value="0.264" />
       </map>
     </option>
   </component>

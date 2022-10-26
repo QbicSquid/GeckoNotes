@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
 
-public class AudioNotesActivity extends AppCompatActivity {
+public class MediaNotesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio_notes);
+        setContentView(R.layout.activity_media_notes);
 
         if(findViewById(R.id.Container)!=null)
         {

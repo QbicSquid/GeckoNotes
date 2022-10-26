@@ -18,24 +18,26 @@
         android:theme="@style/Theme.Notes"
         tools:targetApi="31">
         <activity
-            android:name=".PictureNoteActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".MediaTestingActivity"
+            android:exported="true" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
-            android:name=".AudioNotesActivity"
-            android:exported="true">
-
+            android:name=".PictureNoteActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".MediaNotesActivity"
+            android:exported="false">
 
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="false" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.android.fileproviderNote"
