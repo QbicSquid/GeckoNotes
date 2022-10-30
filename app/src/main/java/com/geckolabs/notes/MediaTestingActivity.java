@@ -33,7 +33,7 @@ public class MediaTestingActivity extends AppCompatActivity {
         btnShowPicNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MediaTestingActivity.this, PictureNoteActivity.class);
+                Intent intent = new Intent(MediaTestingActivity.this, MediaNotesActivity.class);
                 startActivity(intent);
             }
         });
