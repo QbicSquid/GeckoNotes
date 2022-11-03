@@ -5,8 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
+
+import com.geckolabs.notes.AnswerModel;
+import com.geckolabs.notes.QuestionModel;
+import com.geckolabs.notes.QuizModel;
+
 
 public class QuizDAO extends SQLiteOpenHelper {
 
@@ -30,6 +36,7 @@ public class QuizDAO extends SQLiteOpenHelper {
     public QuizDAO(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -67,32 +74,40 @@ public class QuizDAO extends SQLiteOpenHelper {
         values.put(Quiz_Title, title);
 
         long l = sqLiteDatabase.insert(QTABLE_NAME1, null,values);
-
+        Log.d("lvalue", String.valueOf(l));
         sqLiteDatabase.close();
         return l;
     }
 
-    public void addNewQuestion(String type, String ques){
+
+
+    public long addNewQuestion(String type, String ques, Integer quizId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put(Q_Type, type);
         values.put(Q_Text, ques);
+        values.put(Quiz_ID,quizId);
 
         long l = sqLiteDatabase.insert(QTABLE_NAME2, null,values);
-
+        Log.d("newQuestionValue", String.valueOf(l));
+        Log.d("Qtype", String.valueOf(type));
+        Log.d("lvalue2", "DAO add new question");
         sqLiteDatabase.close();
+        return l;
     }
 
-    public void addAnswer (String text, Boolean correct){
+    public void addAnswer (String text, Boolean correct, Integer questionId){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
         values.put(QAns_Text, text);
         values.put(QAns_Correct, correct);
-
+        values.put(Q_ID,questionId);
+        Log.d("DAOquestionID", String.valueOf(questionId));
+        Log.d("CHECK", "CHECK");
         sqLiteDatabase.insert(QTABLE_NAME3, null,values);
 
         sqLiteDatabase.close();
@@ -123,6 +138,98 @@ public class QuizDAO extends SQLiteOpenHelper {
         }
         return quesList;
     }
+
+
+
+    public QuizModel getSingleQuizID(String quizTitle){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(QTABLE_NAME1,new String[]{Quiz_ID,Quiz_Title},
+                Quiz_Title + "= ?",new String[]{quizTitle}
+                ,null,null,null);
+
+
+        QuizModel quizModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            quizModel = new QuizModel(
+                    cursor.getInt(0),
+                    cursor.getString(1)
+            );
+            return quizModel;
+        }
+        return null;
+    }
+
+    public  QuestionModel getSingleQuizQuestions(Integer quizID){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(QTABLE_NAME2,new String[]{Q_ID,Q_Type,Q_Text,Quiz_ID},
+                Quiz_ID + "= ?",new String[]{String.valueOf(quizID)}
+                ,null,null,null);
+
+
+
+        QuestionModel questionModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            questionModel = new QuestionModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3)
+            );
+            return questionModel;
+        }
+        return null;
+    }
+
+    public  QuestionModel getAQuizQuestion(Integer queID){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(QTABLE_NAME2,new String[]{Q_ID,Q_Type,Q_Text,Quiz_ID},
+                Q_ID + "= ?",new String[]{String.valueOf(queID)}
+                ,null,null,null);
+
+        //Log.d("QuestionDao", String.valueOf(cursor.getString(2)));
+        Log.d("Bleh", "CHECKKKKKDAO");
+
+        QuestionModel questionModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            questionModel = new QuestionModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3)
+            );
+            return questionModel;
+        }
+        return null;
+    }
+    public  AnswerModel getQuestionAnswer(Integer queID){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(QTABLE_NAME3,new String[]{QAns_ID,QAns_Text,QAns_Correct,Q_ID},
+                Q_ID + "= ?",new String[]{String.valueOf(queID)}
+                ,null,null,null);
+
+
+
+        AnswerModel answerModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            answerModel = new AnswerModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(1),
+                    cursor.getInt(0)
+            );
+            return answerModel;
+        }
+        return null;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

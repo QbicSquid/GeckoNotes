@@ -71,5 +71,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="addAns">addAns</string>
     <string name="ansCorrect">Correct Answer</string>
+    <string name="addq">Add Question</string>
+    <string name="submitAns">Submit Answer</string>
 
 </resources>
