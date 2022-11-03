@@ -1,5 +1,6 @@
 package com.geckolabs.notes;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -94,19 +95,20 @@ public class viewPictureNote extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("before",picNoteModel.getDescription());
-                String test = "set Description test";
+                String test = "test des";
                 picNoteModel.setDescription(test);
                 Log.d("after",picNoteModel.getDescription());
                 db.updateSinglePicNote(picNoteModel);
                 Log.d("Log1","in On click in update");
-                CreateAudioNote nextFrag= new CreateAudioNote();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.Container, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
+                Intent intent = new Intent(getActivity(),UpdatePicNoteActivity.class);
+                intent.putExtra("id",picNoteModel.getId());
+                startActivity(intent);
 
-
-
+//                CreateAudioNote nextFrag= new CreateAudioNote();
+//                getActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.Container, nextFrag, "findThisFragment")
+//                        .addToBackStack(null)
+//                        .commit();
             }
         });
 

@@ -23,4 +23,16 @@ public class MediaNotesActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().add(R.id.Container,new viewPictureNote(),null).commit();
         }
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if(findViewById(R.id.Container)!=null)
+        {
+            Log.d("InAcc","check");
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(R.id.Container,new viewPictureNote(),null).commit();
+        }
+
+    }
 }
