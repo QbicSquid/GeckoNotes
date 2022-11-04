@@ -47,7 +47,7 @@ public class WrittenAnsView extends AppCompatActivity {
         queDisplay.setText(questionModel.getqText());
 
         AnswerModel answerModel = db.getAnswerForQuestion(questionId);
-        Integer ansID = Integer.valueOf(answerModel.getAnsID());
+        Integer ansID = answerModel.getAnsID();
         //String answer = String.valueOf(answerModel.getqAns());
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +61,7 @@ public class WrittenAnsView extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(WrittenAnsView.this, EditQuizAns.class);
                 intent.putExtra("answerID",ansID);
+                Log.d("WrittenAnsIDTEST", String.valueOf(ansID));
                 startActivity(intent);
             }
         });
