@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_edit_quiz_ans.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_new_quiz_q.xml" value="0.264" />
         <entry key="..\:/AndroidStudioProjects/GeckoNotes/app/src/main/res/layout/activity_question_set_view.xml" value="0.20912547528517111" />

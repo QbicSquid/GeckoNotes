@@ -231,11 +231,11 @@ public class QuizDAO extends SQLiteOpenHelper {
         }
         return null;
     }
-    public  AnswerModel getQuestionAnswer(Integer queID){
+    public  AnswerModel getQuestionAnswer(Integer ansID){
         SQLiteDatabase db = getWritableDatabase();
 
         Cursor cursor = db.query(QTABLE_NAME3,new String[]{QAns_ID,QAns_Text,QAns_Correct,Q_ID},
-                Q_ID + "= ?",new String[]{String.valueOf(queID)}
+                Q_ID + "= ?",new String[]{String.valueOf(ansID)}
                 ,null,null,null);
 
 
@@ -246,8 +246,8 @@ public class QuizDAO extends SQLiteOpenHelper {
             answerModel = new AnswerModel(
                     cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getInt(1),
-                    cursor.getInt(0)
+                    cursor.getInt(2),
+                    cursor.getInt(3)
             );
             return answerModel;
         }

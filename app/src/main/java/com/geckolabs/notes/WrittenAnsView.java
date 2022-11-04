@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,9 +17,9 @@ public class WrittenAnsView extends AppCompatActivity {
 
     TextView queDisplay;
     Button submit;
-    EditText writtenAns;
+    EditText userAns;
     EditText correctAns;
-    ImageButton imageButton;
+    ImageButton editButton;
 
 
     @Override
@@ -30,7 +31,9 @@ public class WrittenAnsView extends AppCompatActivity {
 
         queDisplay = findViewById(R.id.viewQuestion);
         submit = findViewById(R.id.viewAns);
-        //ans = findViewById(R.id.EnterAns);
+        userAns = findViewById(R.id.writtenAns);
+        correctAns = findViewById(R.id.correctAns);
+        editButton = findViewById(R.id.editAns);
 
         Integer questionId;
         Intent intent = getIntent();
@@ -43,6 +46,23 @@ public class WrittenAnsView extends AppCompatActivity {
 
         queDisplay.setText(questionModel.getqText());
 
+        AnswerModel answerModel = db.getAnswerForQuestion(questionId);
+        Integer ansID = Integer.valueOf(answerModel.getAnsID());
+        //String answer = String.valueOf(answerModel.getqAns());
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                correctAns.setText(answerModel.getqAns());
+            }
+        });
 
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(WrittenAnsView.this, EditQuizAns.class);
+                intent.putExtra("answerID",ansID);
+                startActivity(intent);
+            }
+        });
     }
 }

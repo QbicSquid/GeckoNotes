@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Notes"
         tools:targetApi="31">
         <activity
+            android:name=".EditQuizAns"
+            android:exported="false" />
+        <activity
             android:name=".WrittenAnsView"
             android:exported="false" />
         <activity
