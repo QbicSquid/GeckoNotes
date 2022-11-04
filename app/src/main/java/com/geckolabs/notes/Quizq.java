@@ -20,7 +20,7 @@ public class Quizq extends AppCompatActivity {
     FloatingActionButton quizQ;
     TextView quizTitle;
     //RecyclerView qList;
-    ImageButton deleteQuiz;
+    //ImageButton deleteTheQuiz;
     ImageButton saveQuiz;
     private Object view;
 
@@ -33,7 +33,7 @@ public class Quizq extends AppCompatActivity {
 
         saveQuiz = findViewById(R.id.save_quiz_Set);
         quizQ = findViewById(R.id.quizQ);
-        deleteQuiz = findViewById(R.id.deleteQuiz);
+       // deleteTheQuiz = findViewById(R.id.deleteAQuiz);
         //qList = findViewById(R.id.qList);
         quizTitle = findViewById(R.id.question_set_title);
 

@@ -184,6 +184,30 @@ public class QuizDAO extends SQLiteOpenHelper {
         return null;
     }
 
+    public  AnswerModel getAnswerForQuestion(Integer queID){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Log.d("QuestionIdForAnswerDAO ", String.valueOf(queID));
+        Cursor cursor = db.query(QTABLE_NAME3,new String[]{QAns_ID,QAns_Text,QAns_Correct,Q_ID},
+                Q_ID + "= ?",new String[]{String.valueOf(queID)}
+                ,null,null,null);
+
+
+
+        AnswerModel answerModel;
+        if(cursor != null){
+            cursor.moveToFirst();
+            answerModel = new AnswerModel(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getInt(2),
+                    cursor.getInt(3)
+            );
+            return answerModel;
+        }
+        return null;
+    }
+
     public  QuestionModel getAQuizQuestion(Integer queID){
         SQLiteDatabase db = getWritableDatabase();
 
@@ -230,6 +254,18 @@ public class QuizDAO extends SQLiteOpenHelper {
         return null;
     }
 
+    //delete a quiz
+    public void deleteQuizDB(Integer quizId, Integer queId, Integer ansId){
+        SQLiteDatabase db = getWritableDatabase();
+        Log.d("DeleteQuizID", String.valueOf(quizId));
+        Log.d("DeleteQID", String.valueOf(queId));
+        Log.d("DeleteAnsID", String.valueOf(ansId));
+
+        db.delete(QTABLE_NAME3, QAns_ID +" =?", new String[]{String.valueOf(ansId)});
+        db.delete(QTABLE_NAME2, Q_ID+" =?", new String[]{String.valueOf(queId)});
+        db.delete(QTABLE_NAME1, Quiz_ID+" =?", new String[]{String.valueOf(quizId)});
+        db.close();
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {

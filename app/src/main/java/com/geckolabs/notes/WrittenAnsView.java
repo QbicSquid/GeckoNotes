@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.geckolabs.dao.QuizDAO;
@@ -15,7 +16,9 @@ public class WrittenAnsView extends AppCompatActivity {
 
     TextView queDisplay;
     Button submit;
-    EditText ans;
+    EditText writtenAns;
+    EditText correctAns;
+    ImageButton imageButton;
 
 
     @Override
@@ -25,8 +28,8 @@ public class WrittenAnsView extends AppCompatActivity {
 
         QuizDAO db = new QuizDAO(this);
 
-        queDisplay = findViewById(R.id.textView2);
-        submit = findViewById(R.id.button);
+        queDisplay = findViewById(R.id.viewQuestion);
+        submit = findViewById(R.id.viewAns);
         //ans = findViewById(R.id.EnterAns);
 
         Integer questionId;

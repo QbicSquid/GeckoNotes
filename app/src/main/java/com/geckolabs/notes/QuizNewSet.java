@@ -41,7 +41,7 @@ public class QuizNewSet extends AppCompatActivity {
 
         addQuiz.setOnClickListener((v) -> startActivity(new Intent(QuizNewSet.this, Quizq.class)));
         //saveQuizSet.setOnClickListener((v) -> saveQuiz());
-        setupRecyclerVew();
+        //setupRecyclerVew();
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.quizList);
 
@@ -68,13 +68,13 @@ public class QuizNewSet extends AppCompatActivity {
 
     }
 
-    private void setupRecyclerVew() {
+//    private void setupRecyclerVew() {
+//
+//    }
 
-    }
-
-    private void saveQuiz() {
-        //save data
-    }
+//    private void saveQuiz() {
+//        //save data
+//    }
 
 
 }

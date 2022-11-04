@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -19,21 +20,24 @@ public class QuestionSetView extends AppCompatActivity {
     FloatingActionButton quizQ;
     TextView quizTitle;
     ImageButton saveQuiz;
+    ImageButton deleteQuiz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizq);
+        setContentView(R.layout.activity_question_set_view);
 
         QuizDAO db = new QuizDAO(this);
 
         saveQuiz = findViewById(R.id.save_quiz_Set);
-        quizQ = findViewById(R.id.quizQ);
-        quizTitle = findViewById(R.id.question_set_title);
+        quizQ = findViewById(R.id.add_quiz);
+        quizTitle = findViewById(R.id.quiz_set_title);
+        deleteQuiz = findViewById(R.id.deleteBtn);
 
         String quizTitleID;
         Intent intent2 = getIntent();
         quizTitleID = intent2.getStringExtra("quizTitleID");
+        //quizTitleID = title of the quiz
         Log.d("Titles", quizTitleID);
         QuizModel quizModel = db.getSingleQuizID(quizTitleID);
 
@@ -41,9 +45,11 @@ public class QuestionSetView extends AppCompatActivity {
         Log.d("CheckforQuizId", String.valueOf(questionModel.getqId()));
         Log.d("CHECKFORID", String.valueOf(quizModel.getQuizId()));
 
+        Integer quizId = Integer.valueOf(quizModel.getQuizId());
+
         quizTitle.setText(quizTitleID);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.quesList);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.quizList);
         Button quiz = new Button(this);
         quiz.setPadding(5, 5, 5, 5);
         quiz.setTextSize(20);
@@ -54,6 +60,22 @@ public class QuestionSetView extends AppCompatActivity {
         layout.addView(quiz);
         Integer queId = questionModel.getqId();
         quiz.setOnClickListener((v) -> directQuestions(queId));
+
+        AnswerModel answerModel = db.getAnswerForQuestion(queId);
+        Integer ansID = Integer.valueOf(answerModel.getAnsID());
+        Log.d("AnsIDJava", String.valueOf(ansID));
+
+        Integer ansId ;
+
+        deleteQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.deleteQuizDB(quizId, queId, ansID);
+                Log.d("quiz ID to delete", String.valueOf(quizModel.getQuizId()));
+                Intent intent = new Intent(QuestionSetView.this, QuizNewSet.class);
+            }
+
+        });
 
     }
 

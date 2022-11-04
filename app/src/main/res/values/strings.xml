@@ -70,8 +70,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="addAns">addAns</string>
-    <string name="ansCorrect">Correct Answer</string>
+    <string name="ansCorrect">Set Answer</string>
     <string name="addq">Add Question</string>
     <string name="submitAns">Submit Answer</string>
+    <string name="viewAns">View Answer</string>
 
 </resources>

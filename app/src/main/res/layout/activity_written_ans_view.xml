@@ -1,31 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WrittenAnsView">
+    tools:context=".WrittenAns">
 
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="560dp"-->
+    <!--        android:layout_below="@+id/writtenAns"-->
+    <!--        android:layout_marginTop="135dp"-->
+    <!--        android:padding="16dp">-->
 
+    <!--    </LinearLayout>-->
 
+    <EditText
+        android:id="@+id/writtenAns"
+        android:layout_width="345dp"
+        android:layout_height="113dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="center"
+        android:hint="Type answer here"
+        android:maxLines="3"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewAns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewQuestion"
+        app:layout_constraintVertical_bias="0.473" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="271dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="96dp"
-        android:text="@string/submitAns"
+        android:id="@+id/viewAns"
+        android:layout_width="331dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="@string/viewAns"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/writtenAns">
+
+    </Button>
+
+    <EditText
+        android:id="@+id/correctAns"
+        android:layout_width="345dp"
+        android:layout_height="113dp"
+        android:layout_marginVertical="8dp"
+        android:layout_marginTop="132dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="center"
+        android:maxLines="3"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewAns"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="312dp"
-        android:layout_height="83dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/viewQuestion"
+        android:layout_width="344dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="84dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="66dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginBottom="40dp"
+        android:src="@android:drawable/ic_menu_edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correctAns"
+        app:tint="@color/cardview_dark_background" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

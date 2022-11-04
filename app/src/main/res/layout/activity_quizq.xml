@@ -34,15 +34,6 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_save_24" />
 
-        <ImageButton
-            android:id="@+id/deleteQuiz"
-            android:layout_width="wrap_content"
-            android:layout_height="59dp"
-            android:layout_marginEnd="21dp"
-            android:layout_centerVertical="true"
-            android:layout_toStartOf="@+id/save_quiz_Set"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
-
 
     </RelativeLayout>
 

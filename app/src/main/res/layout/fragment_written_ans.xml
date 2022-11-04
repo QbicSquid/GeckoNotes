@@ -9,7 +9,7 @@
         android:id="@+id/writtenAns"
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginVertical="20dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:hint="Type answer here"
@@ -23,13 +23,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/writtenAns"
-        android:layout_marginTop="-9dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp">
 
         <Button
             android:id="@+id/ansCorrect"
             android:layout_width="384dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dp"
             android:text="@string/ansCorrect">
 
         </Button>

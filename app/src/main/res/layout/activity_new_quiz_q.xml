@@ -67,7 +67,7 @@
 
     <RelativeLayout
         android:id="@+id/ansType"
-        android:layout_width="383dp"
+        android:layout_width="357dp"
         android:layout_height="367dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -83,12 +83,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/addq"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        tools:layout_editor_absoluteX="115dp"
         app:layout_constraintBottom_toTopOf="@+id/ansType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

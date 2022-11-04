@@ -8,6 +8,7 @@
     android:padding="16dp"
     tools:context=".QuizNewSet">
 
+
     <RelativeLayout
         android:id="@+id/quizzes"
         android:layout_width="match_parent"
@@ -33,8 +34,16 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_save_24" />
 
-    </RelativeLayout>
+        <ImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="21dp"
+            android:layout_toStartOf="@+id/save_quiz_Set"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_quiz"
@@ -54,4 +63,5 @@
         android:layout_marginTop="25dp"
         android:layout_marginBottom="56dp"
         android:orientation="vertical"></LinearLayout>
+
 </RelativeLayout>
