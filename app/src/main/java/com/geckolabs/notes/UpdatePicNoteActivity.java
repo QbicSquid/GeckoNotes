@@ -41,15 +41,10 @@ public class UpdatePicNoteActivity extends AppCompatActivity {
         imgView = findViewById(R.id.imgView);
 
         Intent intent = getIntent();
-//        picNoteId =15;
         picNoteId = intent.getIntExtra("id",0);
-//        Log.d("id test",picNoteId);
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);
-//        Log.d("des",picNoteModel.getDescription());
-//        Log.d("title",picNoteModel.getTitle());
-//        Log.d("path",picNoteModel.getMediaPath());
         String stringImageUri = "file://"+picNoteModel.getMediaPath();
         selectedImageUri= Uri.parse(stringImageUri);
 //        IVPreviewImage.setImageURI(selectedImageUri);
@@ -72,8 +67,9 @@ public class UpdatePicNoteActivity extends AppCompatActivity {
                 picNoteModel.setTitle(txtTitle.getText().toString());
                 Log.d("after",picNoteModel.getDescription());
                 db.updateSinglePicNote(picNoteModel);
-                Log.d("Log1","in On click in update");
-//                finish();
+                Intent intent = new Intent(UpdatePicNoteActivity.this, MediaNotesActivity.class);
+                intent.putExtra("noteId",picNoteModel.getNoteId());
+                startActivity(intent);
 
             }
         });

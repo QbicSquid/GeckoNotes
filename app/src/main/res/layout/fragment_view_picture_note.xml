@@ -5,7 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/view_picnote_frame"
-    android:backgroundTint="?android:attr/colorFocusedHighlight"
     tools:context=".viewPictureNote">
 
 
