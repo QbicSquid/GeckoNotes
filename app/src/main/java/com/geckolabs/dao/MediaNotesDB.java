@@ -30,13 +30,13 @@ public class MediaNotesDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "CREATE TABLE " + TABLE_NAME + " ("
-                + ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + TITLE+ " TEXT,"
-                + DESCRIPTION + " TEXT,"
-                + TYPE + " TEXT,"
-                + NOTE_ID + " INTEGER,"
-                + MEDIA_FILE + " TEXT);";
+        String query = "CREATE TABLE " + "MediaNote" + " ("
+                + "id" + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "title"+ " TEXT,"
+                + "description" + " TEXT,"
+                + "mediaId" + " TEXT,"
+                + "noteId" + " INTEGER,"
+                + "mediaFile" + " TEXT);";
 
 
         sqLiteDatabase.execSQL(query);
@@ -44,29 +44,18 @@ public class MediaNotesDB extends SQLiteOpenHelper {
     }
     public void addNewAudioNote(String title,String description,String mediaPath) {
 
-        // on below line we are creating a variable for
-        // our sqlite database and calling writable method
-        // as we are writing data in our database.
         SQLiteDatabase db = this.getWritableDatabase();
 
-        // on below line we are creating a
-        // variable for content values.
         ContentValues values = new ContentValues();
 
-        // on below line we are passing all values
-        // along with its key and value pair.
         values.put(TITLE,title );
         values.put(DESCRIPTION,description);
         values.put(TYPE,"audio");
         values.put(NOTE_ID,1);
         values.put(MEDIA_FILE,mediaPath);
 
-        // after adding all values we are passing
-        // content values to our table.
         db.insert(TABLE_NAME, null, values);
 
-        // at last we are closing our
-        // database after adding database.
         db.close();
     }
     public String[] getPicNote(Integer id) {

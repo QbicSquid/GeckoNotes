@@ -3,6 +3,7 @@ package com.geckolabs.notes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,7 +39,11 @@ public class UpdatePicNoteActivity extends AppCompatActivity {
         txtTitle = findViewById(R.id.txtTitle);
         txtDescription =findViewById(R.id.txtDescription);
         imgView = findViewById(R.id.imgView);
-        picNoteId = 15;
+
+        Intent intent = getIntent();
+//        picNoteId =15;
+        picNoteId = intent.getIntExtra("id",0);
+//        Log.d("id test",picNoteId);
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);

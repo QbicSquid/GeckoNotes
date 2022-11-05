@@ -60,13 +60,10 @@ public class viewPictureNote extends Fragment {
         imgBtnDelete = view.findViewById(R.id.imgBtnDelete);
         imgBtnUpdate = view.findViewById(R.id.imgBtnUpdate);
 
-        picNoteId = 15;
+        picNoteId = 24;
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);
-//        Log.d("des",picNoteModel.getDescription());
-//        Log.d("title",picNoteModel.getTitle());
-//        Log.d("path",picNoteModel.getMediaPath());
         String stringImageUri = "file://"+picNoteModel.getMediaPath();
         selectedImageUri= Uri.parse(stringImageUri);
 //        IVPreviewImage.setImageURI(selectedImageUri);
@@ -84,7 +81,7 @@ public class viewPictureNote extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("Log1","in On click in delete");
-                int picId = 1;
+                int picId = picNoteModel.getId();
                 db.deletePicNote(picId);
 
             }
@@ -94,9 +91,7 @@ public class viewPictureNote extends Fragment {
         imgBtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("before",picNoteModel.getDescription());
-                String test = "test des";
-                picNoteModel.setDescription(test);
+
                 Log.d("after",picNoteModel.getDescription());
                 db.updateSinglePicNote(picNoteModel);
                 Log.d("Log1","in On click in update");
@@ -104,11 +99,6 @@ public class viewPictureNote extends Fragment {
                 intent.putExtra("id",picNoteModel.getId());
                 startActivity(intent);
 
-//                CreateAudioNote nextFrag= new CreateAudioNote();
-//                getActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.Container, nextFrag, "findThisFragment")
-//                        .addToBackStack(null)
-//                        .commit();
             }
         });
 
