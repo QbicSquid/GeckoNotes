@@ -42,7 +42,6 @@ public class WrittenAnsView extends AppCompatActivity {
         Log.d("Question Id", String.valueOf(questionId));
         Log.d("QuestionType", questionModel.getqType());
         Log.d("Question", questionModel.getqText());
-        //AnswerModel answerModel = db.getQuestionAnswer(questionId);
 
         queDisplay.setText(questionModel.getqText());
 

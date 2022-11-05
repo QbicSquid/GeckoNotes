@@ -34,15 +34,6 @@ public class WrittenAns extends Fragment {
 
         return inflater.inflate(R.layout.fragment_written_ans, container, false);
 
-        /*
-        Bundle bundle = this.getArguments();
-
-        final long questionID = bundle.getLong("questionID");
-        Log.d("questionId", String.valueOf(questionID));
-
-        return view;
-
-         */
     }
 
     @Override
@@ -52,12 +43,7 @@ public class WrittenAns extends Fragment {
         QuizDAO db = new QuizDAO(getActivity());
         editAns = view.findViewById(R.id.writtenAns);
         btn = view.findViewById(R.id.ansCorrect);
-        /*
-        Bundle bundle = this.getArguments();
 
-        final long questionID = bundle.getLong("questionID");
-        Log.d("questionId", String.valueOf(questionID));
-         */
         Bundle bundle = this.getArguments();
         Integer questID = Math.toIntExact((bundle.getLong("questionID")));
         Log.d("questionIdWrittenANS", String.valueOf(questID));
@@ -72,11 +58,4 @@ public class WrittenAns extends Fragment {
 
     }
 
-//    void saveNote() {
-//        String WriteAns = editAns.getText().toString();
-//        if(WriteAns==null || WriteAns.isEmpty()){
-//            editAns.setError("Answer is required");
-//            return;
-//        }
-//    }
 }

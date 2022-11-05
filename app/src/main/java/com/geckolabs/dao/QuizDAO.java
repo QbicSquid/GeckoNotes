@@ -273,10 +273,6 @@ public class QuizDAO extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(QAns_Text,answerModel.getqAns());
-      //  contentValues.put(DESCRIPTION,answerModel.getDescription());
-//        contentValues.put(TYPE,"audio");
-//        contentValues.put(NOTE_ID,1);
-//        contentValues.put(MEDIA_FILE,mediaPath);
 
         int status = db.update(QTABLE_NAME3,contentValues, QAns_ID+" =?",
                 new String[]{String.valueOf(answerModel.getAnsID())});

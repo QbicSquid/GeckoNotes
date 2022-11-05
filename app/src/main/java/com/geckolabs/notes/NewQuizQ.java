@@ -36,6 +36,8 @@ public class NewQuizQ extends AppCompatActivity {
 
     //final long[] questionID = {0};
     long questions = 0;
+    long queId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,6 @@ public class NewQuizQ extends AppCompatActivity {
         question = findViewById(R.id.question);
         btn = findViewById(R.id.saveWrittenAns);
         addQue = findViewById(R.id.savequestion);
-
-        //btn.setOnClickListener((v) -> saveNote());
 
 
         autoCompleteTxt = findViewById(R.id.auto_complete_txt);
@@ -88,14 +88,11 @@ public class NewQuizQ extends AppCompatActivity {
                 Integer quizId = 999;
                 Intent intent = getIntent();
                 quizId = Integer.valueOf((int) intent.getLongExtra("quizID", 0));
-                long queId = db.addNewQuestion(autoCompleteTxt.getText().toString(), question.getText().toString(), quizId);
+                queId = db.addNewQuestion(autoCompleteTxt.getText().toString(), question.getText().toString(), quizId);
                 //questionID[0] = queId;
                 questions = queId;
                 Log.d("quizzz", String.valueOf(quizId));
                 Log.d("queeee", String.valueOf(queId));
-                //sendDatatoFragments();
-                //Log.d("", String.valueOf(intent.getLongExtra("quizID",0)));
-
 
             }
 
@@ -109,17 +106,10 @@ public class NewQuizQ extends AppCompatActivity {
 
         fragment.setArguments(bundle);
         Log.d("NewQuizQ_questionID", String.valueOf(questions));
+        Log.d("NewQuizQ_queIDCheck", String.valueOf(queId));
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.ansType, fragment);
         fragmentTransaction.commit();
     }
-    /*
-    private void sendDatatoFragments(){
-        long questionID = 0;
-
-        questionID = l
-
-    }
-*/
 
 }

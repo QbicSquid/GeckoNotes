@@ -19,8 +19,6 @@ public class Quizq extends AppCompatActivity {
 
     FloatingActionButton quizQ;
     TextView quizTitle;
-    //RecyclerView qList;
-    //ImageButton deleteTheQuiz;
     ImageButton saveQuiz;
     private Object view;
 
@@ -33,26 +31,8 @@ public class Quizq extends AppCompatActivity {
 
         saveQuiz = findViewById(R.id.save_quiz_Set);
         quizQ = findViewById(R.id.quizQ);
-       // deleteTheQuiz = findViewById(R.id.deleteAQuiz);
-        //qList = findViewById(R.id.qList);
         quizTitle = findViewById(R.id.question_set_title);
 
-//        String quizTitleID;
-//        Intent intent2 = getIntent();
-//        quizTitleID = intent2.getStringExtra("quizTitleID");
-//       // Log.d("Titles", quizTitleID);
-//        QuizModel quizModel = db.getSingleQuizID(quizTitleID);
-//
-//        QuestionModel questionModel = db.getSingleQuizQuestions(quizModel.getQuizId());
-//        Log.d("CheckforQuizId", String.valueOf(questionModel.getqId()));
-//        Log.d("CHECKFORID", String.valueOf(quizModel.getQuizId()));
-//        if (quizTitle == null){
-//            quizTitle.setText(quizTitleID);
-//        }
-
-
-        //db.addNewQuiz(quizTitle.getText().toString());
-        //addQuiz.setOnClickListener((v)-> startActivity(new Intent(QuizNewSet.this,Quizq.class)));
 
         quizQ.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,51 +44,6 @@ public class Quizq extends AppCompatActivity {
             }
         });
 
-//        LinearLayout layout = (LinearLayout) findViewById(R.id.quesList);
-//        Button quiz = new Button(this);
-//        quiz.setPadding(5, 5, 5, 5);
-//        quiz.setTextSize(20);
-//        quiz.setLayoutParams(new LinearLayout.LayoutParams(600, 100));
-//        String questionId = String.valueOf(questionModel.getqId());
-//        Log.d("checkkkk",questionId);
-//        quiz.setText(questionId);
-//        layout.addView(quiz);
-
-        /*
-        quizQ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Quizq.this, NewQuizQ.class));
-
-            }
-        });
-
-         */
-
-       // LinearLayout layout = (LinearLayout) findViewById(R.id.quesList);
-
-
-//        String[] quesList = db.getQuesList();
-//        for (String s : quesList) {
-//            Button quiz = new Button(this);
-//            quiz.setPadding(5, 5, 5, 5);
-//            quiz.setTextSize(20);
-//            quiz.setLayoutParams(new LinearLayout.LayoutParams(600, 100));
-//            quiz.setText(s);
-//            layout.addView(quiz);
-//        }
-
-
-//        btn.setOnClickListener(new View.OnClickListener(){
-//
-//            @Override
-//            public void onClick(View view) {
-//
-//                Fragment fragment = new RadiobtnQuiz();
-//                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.replace(R.id.container,fragment).commit();
-//            }
-//        });
     }
 
 }

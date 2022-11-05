@@ -37,7 +37,6 @@ public class QuestionSetView extends AppCompatActivity {
         String quizTitleID;
         Intent intent2 = getIntent();
         quizTitleID = intent2.getStringExtra("quizTitleID");
-        //quizTitleID = title of the quiz
         Log.d("Titles", quizTitleID);
         QuizModel quizModel = db.getSingleQuizID(quizTitleID);
 
@@ -51,7 +50,7 @@ public class QuestionSetView extends AppCompatActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.quizList);
         Button quiz = new Button(this);
-        quiz.setPadding(5, 5, 5, 5);
+        quiz.setPadding(5, 5, 10, 5);
         quiz.setTextSize(20);
         quiz.setLayoutParams(new LinearLayout.LayoutParams(600, 100));
         String questionId = String.valueOf(questionModel.getqId());

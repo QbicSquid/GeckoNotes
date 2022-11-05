@@ -5,16 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WrittenAns">
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="560dp"-->
-    <!--        android:layout_below="@+id/writtenAns"-->
-    <!--        android:layout_marginTop="135dp"-->
-    <!--        android:padding="16dp">-->
-
-    <!--    </LinearLayout>-->
+    tools:context=".WrittenAns"
+    android:padding="6dp">
 
     <EditText
         android:id="@+id/writtenAns"
@@ -55,7 +47,7 @@
         android:layout_width="345dp"
         android:layout_height="113dp"
         android:layout_marginVertical="8dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:maxLines="3"
@@ -65,18 +57,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAns"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/viewQuestion"
-        android:layout_width="344dp"
-        android:layout_height="88dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="15dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,12 +79,10 @@
         android:id="@+id/editAns"
         android:layout_width="66dp"
         android:layout_height="61dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
         android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintHorizontal_bias="0.884"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/correctAns"
         app:tint="@color/cardview_dark_background" />

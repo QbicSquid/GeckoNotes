@@ -23,10 +23,6 @@ public class QuizNewSet extends AppCompatActivity {
     FloatingActionButton addQuiz;
     ImageButton saveQuizSet;
     TextView quizSetTitle;
-    //RecyclerView quizList;
-    //QuizAdapter quizAdapter;
-    // RecyclerView.LayoutManager layoutManager;
-    //QuizList<Quiz> allQuiz = new ArrayList<Object>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +36,6 @@ public class QuizNewSet extends AppCompatActivity {
         //quizList = findViewById(R.id.quizList);
 
         addQuiz.setOnClickListener((v) -> startActivity(new Intent(QuizNewSet.this, Quizq.class)));
-        //saveQuizSet.setOnClickListener((v) -> saveQuiz());
-        //setupRecyclerVew();
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.quizList);
 
@@ -67,14 +61,6 @@ public class QuizNewSet extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-//    private void setupRecyclerVew() {
-//
-//    }
-
-//    private void saveQuiz() {
-//        //save data
-//    }
 
 
 }

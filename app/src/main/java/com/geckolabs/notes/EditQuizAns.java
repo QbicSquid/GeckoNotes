@@ -23,25 +23,19 @@ public class EditQuizAns extends AppCompatActivity {
 
         QuizDAO db = new QuizDAO(this);
 
-        //AnswerModel answerModel;
-
         edAnswer = findViewById(R.id.correctAns);
         saveEditAns = findViewById(R.id.saveAns);
 
-//        String dbAnswer;
-//        Intent intent = getIntent();
-//        dbAnswer = intent.getStringExtra("danswer");
-//        edAnswer.setText(dbAnswer);
         Log.d("Hello","Hello1");
         Integer answID;
         Intent intent = getIntent();
         answID = intent.getIntExtra("answerID", 0);
         Log.d("EditQuizTEST", String.valueOf(answID));
+
         AnswerModel answerModel = db.getQuestionAnswer(answID);
         edAnswer.setText(answerModel.getqAns());
         String testdbAnswer = answerModel.getqAns();
         Log.d("DBtestAnswerONEdit", testdbAnswer);
-
 
         saveEditAns.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,9 +7,15 @@
 
     <EditText
         android:id="@+id/writtenAns"
-        android:layout_width="match_parent"
-        android:layout_height="62dp"
+        android:layout_width="wrap_content"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginVertical="20dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="51dp"
+        android:layout_marginEnd="47dp"
         android:background="@drawable/rounded_corner"
         android:gravity="center"
         android:hint="Type answer here"
@@ -19,24 +25,21 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/ansCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/writtenAns"
-        android:layout_marginTop="16dp"
-        android:padding="16dp">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="91dp"
+        android:background="@drawable/rounded_corner"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:text="@string/ansCorrect">
 
-        <Button
-            android:id="@+id/ansCorrect"
-            android:layout_width="384dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="7dp"
-            android:text="@string/ansCorrect">
-
-        </Button>
-
-    </LinearLayout>
+    </Button>
 
 
 </RelativeLayout>
