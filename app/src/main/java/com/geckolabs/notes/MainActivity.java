@@ -1,13 +1,20 @@
 package com.geckolabs.notes;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.content.Intent;
 import android.widget.TextView;
@@ -56,6 +63,24 @@ public class MainActivity extends AppCompatActivity {
             text.setBackgroundColor(Color.CYAN);
             layout.addView(text);
         }
+
+        ImageButton addNoteBtn = (ImageButton) findViewById(R.id.add_note_button);
+        addNoteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().add(R.id.frag_container,new NewNoteFragment(),null).commit();
+            }
+        });
+
+        ImageButton backButton = (ImageButton) findViewById(R.id.back_home_buttom);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 //    public void delDB(View view) {

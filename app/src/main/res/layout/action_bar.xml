@@ -8,14 +8,14 @@
     android:background="@color/yellow">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/back_home_buttom"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:backgroundTint="@color/orange"
         android:background="@drawable/gecko_button1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu_icon" />
+        app:srcCompat="@drawable/ic_back_icon" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -24,13 +24,13 @@
         android:layout_marginStart="8dp"
         android:backgroundTint="@color/orange"
         android:background="@drawable/gecko_button1"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/add_note_button"
+        app:layout_constraintStart_toEndOf="@+id/back_home_buttom"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_search_icon" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/add_note_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:backgroundTint="@color/orange"

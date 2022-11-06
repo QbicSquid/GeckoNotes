@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -18,24 +20,26 @@
         android:theme="@style/Theme.Notes"
         tools:targetApi="31">
         <activity
+            android:name=".NewNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewNote"
+            android:exported="false" />
+        <activity
             android:name=".UpdatePicNoteActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MediaTestingActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".PictureNoteActivity"
             android:exported="false" />
         <activity
             android:name=".MediaNotesActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,6 +58,4 @@
         </provider>
     </application>
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 </manifest>

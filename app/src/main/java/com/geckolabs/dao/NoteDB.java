@@ -23,7 +23,7 @@ public class NoteDB extends DBBase {
         db.execSQL(query);
     }
 
-    public void insert(Note note) {
+    public long insert(Note note) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -31,7 +31,8 @@ public class NoteDB extends DBBase {
         values.put("note_group", note.getNote_group());
         values.put("color", note.getColor());
 
-        db.insert("note", null, values);
+        long noteId = db.insert("note", null, values);
+        return noteId;
     }
 
 
