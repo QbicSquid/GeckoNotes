@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.geckolabs.notes">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,6 +19,21 @@
         android:theme="@style/Theme.Notes"
         tools:targetApi="31">
         <activity
+            android:name=".ViewNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdatePicNoteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MediaTestingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".PictureNoteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MediaNotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -22,6 +42,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+            android:name=".EditQuizAns"
+            android:exported="false" />
+        <activity
+            android:name=".WrittenAnsView"
+            android:exported="false" />
+        <activity
+            android:name=".QuestionSetView"
+            android:exported="false" />
+        <activity
+            android:name=".NewQuizQ"
+            android:exported="false" />
+        <activity
+            android:name=".Quizq"
+            android:exported="false" />
+        <activity
+            android:name=".QuizNewSet"
+            android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.android.fileproviderNote"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
