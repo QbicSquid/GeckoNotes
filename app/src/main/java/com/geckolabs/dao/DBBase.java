@@ -23,6 +23,7 @@ public class DBBase extends SQLiteOpenHelper {
         NoteDB.createTableNote(db);
         MediaNotesDB.createTablePictureNote(db);
         QuizDAO.createTablePictureNote(db);
+        TextDB.createTableNote(db);
     }
 
     @Override

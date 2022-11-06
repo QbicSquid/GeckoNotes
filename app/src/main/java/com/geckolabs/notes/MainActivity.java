@@ -56,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton taskButton = (ImageButton) findViewById(R.id.tasks_button);
+        taskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoteActivity.class);
+                startActivity(intent);
+            }
+        });
+
         showNotes();
 
         Intent intent = getIntent();
