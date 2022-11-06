@@ -8,18 +8,6 @@
     tools:context=".NoteActivity">
 
 
-
-    <Button
-        android:id="@+id/h_btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="379dp"
@@ -34,49 +22,20 @@
         android:id="@+id/btntextbox"
         android:layout_width="149dp"
         android:layout_height="54dp"
-        android:layout_marginTop="60dp"
-        android:text="TextBox"
+        android:layout_marginTop="220dp"
         android:onClick="onclickButton"
-        app:layout_constraintBottom_toTopOf="@+id/btnlist"
+        android:text="Add to do"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.186" />
-
-    <Button
-        android:id="@+id/btnlist"
-        android:layout_width="149dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="8dp"
-        android:text="List"
-        android:onClick="onclickB"
-        app:layout_constraintBottom_toTopOf="@+id/btntable"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btntextbox" />
-
-    <Button
-        android:id="@+id/btntable"
-        android:layout_width="149dp"
-        android:layout_height="54dp"
-        android:layout_marginBottom="16dp"
-        android:text="Table"
-        android:onClick="onclickBtn"
-        app:layout_constraintBottom_toTopOf="@+id/h_btn1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnlist"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="Note Name"
+        android:text="To Do List"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
