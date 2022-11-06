@@ -1,5 +1,7 @@
 package com.geckolabs.notes;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,12 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geckolabs.dao.NoteDB;
 import com.geckolabs.dao.model.Note;
-
-import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +33,7 @@ public class NewNoteFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int noteId = 0;
 
     public NewNoteFragment() {
         // Required empty public constructor
@@ -74,20 +77,63 @@ public class NewNoteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Bundle bundle = getArguments();
+        if (bundle != null)
+            noteId = bundle.getInt("noteId");
+
         TextView noteNameView = (TextView) getView().findViewById(R.id.note_name);
         TextView noteGroupView = (TextView) getView().findViewById(R.id.note_group);
+        LinearLayout deleteButtonContainer = (LinearLayout)  getView().findViewById(R.id.delete_btn_container);
 
         View confirmBtn = getView().findViewById(R.id.add_note_confirm_button);
-        confirmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String noteName = noteNameView.getText().toString();
-                String noteGroup = noteGroupView.getText().toString();
 
-                NoteDB db = new NoteDB(getContext());
-                long noteId = db.insert(new Note(noteName, noteGroup, 0));
-                Log.d("NOTE ID 7:21", Long.toString(noteId));
-            }
-        });
+        if (noteId == 0)
+            confirmBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String noteName = noteNameView.getText().toString();
+                    String noteGroup = noteGroupView.getText().toString();
+
+                    NoteDB db = new NoteDB(getContext());
+                    long noteId = db.insert(new Note(noteName, noteGroup, 0));
+                    Log.d("NOTE ID 7:21", Long.toString(noteId));
+
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+        else {
+            confirmBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String noteName = noteNameView.getText().toString();
+                    String noteGroup = noteGroupView.getText().toString();
+
+                    NoteDB db = new NoteDB(getContext());
+                    db.update(new Note(noteId, noteName, noteGroup, 0));
+
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+            Button deleteButton = new Button(getContext());
+            deleteButton.setText("Delete Note");
+            deleteButton.setTextColor(Color.WHITE);
+            deleteButton.setBackgroundResource(R.drawable.gecko_button1);
+            deleteButtonContainer.addView(deleteButton);
+
+            // Event Listener for adding a picture
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    NoteDB db = new NoteDB(getContext());
+                    db.delete(noteId);
+
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

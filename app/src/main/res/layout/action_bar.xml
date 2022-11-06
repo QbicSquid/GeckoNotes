@@ -11,32 +11,55 @@
         android:id="@+id/back_home_buttom"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:backgroundTint="@color/orange"
         android:background="@drawable/gecko_button1"
+        android:backgroundTint="@color/orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back_icon" />
+        app:srcCompat="@drawable/ic_back_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/quizes_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:backgroundTint="@color/orange"
         android:background="@drawable/gecko_button1"
-        app:layout_constraintEnd_toStartOf="@+id/add_note_button"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintEnd_toStartOf="@+id/frameLayout3"
         app:layout_constraintStart_toEndOf="@+id/back_home_buttom"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_quiz_icon" />
+        app:srcCompat="@drawable/ic_quiz_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/tasks_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/gecko_button1"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintEnd_toStartOf="@+id/add_note_button"
+        app:layout_constraintStart_toEndOf="@+id/frameLayout3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_task_icon" />
 
     <ImageButton
         android:id="@+id/add_note_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:backgroundTint="@color/orange"
         android:background="@drawable/gecko_button1"
+        android:backgroundTint="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_plus_icon" />
+        app:srcCompat="@drawable/ic_plus_icon"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/add_note_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

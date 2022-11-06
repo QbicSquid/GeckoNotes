@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ViewNoteActivity">
 
+    <FrameLayout
+        android:id="@+id/view_note_frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
     <TextView
         android:id="@+id/note_name_view"
         android:layout_width="wrap_content"

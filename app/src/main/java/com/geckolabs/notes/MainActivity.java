@@ -56,6 +56,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton taskButton = (ImageButton) findViewById(R.id.tasks_button);
+        taskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NoteActivity.class);
+                startActivity(intent);
+            }
+        });
+
         showNotes();
 
         Intent intent = getIntent();
@@ -78,7 +87,11 @@ public class MainActivity extends AppCompatActivity {
             TextView text = new TextView(this);
             text.setText(note.getTitle());
             text.setWidth(ActionBar.LayoutParams.MATCH_PARENT);
-            text.setBackgroundColor(Color.CYAN);
+            text.setBackgroundResource(R.drawable.view_picnote_frame);
+//            text.setBackgroundColor(Color.CYAN);
+
+            TextView textDummy = new TextView(this);
+            textDummy.setLayoutParams(new LinearLayout.LayoutParams(1, 10));
 
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -88,8 +101,21 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+            text.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("noteId", note.getId());
+                    NewNoteFragment fragment = new NewNoteFragment();
+                    fragment.setArguments(bundle);
+                    fragmentManager.beginTransaction().add(R.id.frag_container, fragment, null).commit();
+                    return true;
+                }
+            });
 
             layout.addView(text);
+            layout.addView(textDummy);
         }
     }
 }
