@@ -19,17 +19,7 @@ public class DBBase extends SQLiteOpenHelper {
     // below method is for creating a database by running a sqlite query
     @Override
     public void onCreate(SQLiteDatabase db) {
-        createTableNote(db);
-    }
-
-    private void createTableNote(SQLiteDatabase db) {
-        String query = "CREATE TABLE note"
-                + " ("
-                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "note_group INTEGER,"
-                + "color INTEGER"
-                + ")";
-        db.execSQL(query);
+        NoteDB.createTableNote(db);
     }
 
     @Override
