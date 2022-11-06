@@ -49,8 +49,6 @@ public class NoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note);
 
         TextBox = findViewById(R.id.btntextbox);
-        List = findViewById(R.id.btnlist);
-        Table = findViewById(R.id.btntable);
         ViewAll = findViewById(R.id.btnviewall);
         lv_customerList = findViewById(R.id.lv_customerList);
         searchView = findViewById(R.id.search);
