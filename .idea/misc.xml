@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/drawable/frame_with_margin.xml" value="0.1015" />
         <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/action_bar.xml" value="0.67" />
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_main.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_media_notes.xml" value="0.22" />
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_quizq.xml" value="0.18541666666666667" />
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_view_note.xml" value="0.25" />
+        <entry key="..\:/Users/shifa/AndroidStudioProjects/Notes/app/src/main/res/layout/fragment_new_note.xml" value="0.2" />
       </map>
     </option>
   </component>

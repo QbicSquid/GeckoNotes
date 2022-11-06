@@ -42,7 +42,7 @@ public class NoteDB extends DBBase {
         Cursor cursor = db.rawQuery(query, null);
         cursor.move(1);
 
-        Note note = new Note(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+        Note    note = new Note(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
         return note;
     }
 
@@ -59,5 +59,21 @@ public class NoteDB extends DBBase {
         }
 
         return notes;
+    }
+
+    public void delete(int noteId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("note","id =?",new String[]{String.valueOf(noteId)});
+    }
+
+    public void update(Note note) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("title", note.getTitle());
+        contentValues.put("note_group", note.getNote_group());
+        contentValues.put("color", note.getColor());
+
+        int status = db.update("note", contentValues, "id =?",
+                new String[]{String.valueOf(note.getId())});
     }
 }

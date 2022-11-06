@@ -3,6 +3,7 @@ package com.geckolabs.notes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Application;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -84,6 +85,25 @@ public class ViewNoteActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            Button deleteButton = new Button(getApplicationContext());
+            deleteButton.setText("Delete Note");
+            deleteButton.setTextColor(Color.WHITE);
+            deleteButton.setBackgroundResource(R.drawable.gecko_button1);
+            btnContainer.addView(deleteButton);
+
+            // Event Listener for adding a picture
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    NoteDB db = new NoteDB(getApplicationContext());
+                    db.delete(noteId);
+
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+
         }
     }
 
