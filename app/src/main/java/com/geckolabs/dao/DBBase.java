@@ -8,7 +8,7 @@ import android.provider.MediaStore;
 public class DBBase extends SQLiteOpenHelper {
     // creating a constant variables for our database.
     // below variable is for our database name.
-    protected static final String DB_NAME = "coursedb";
+    protected static final String DB_NAME = "NoteDB";
 
     // below int is our database version
     protected static final int DB_VERSION = 1;

@@ -36,34 +36,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.action_bar);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffe1a8")));
 
-        showNotes();
-    }
-
-//    public void addCourse(View view) {
-//        NoteDB db = new NoteDB(this);
-//        EditText input = (EditText) findViewById(R.id.courseInput);
-//
-//        db.addNewCourse(input.getText().toString());
-//
-//        String[] courses = db.getCourses();
-//        for (String s : courses)
-//            Log.d("LOGGG: ", s);
-//        Context c = view.getContext();
-//    }
-
-    public void showNotes() {
-        NoteDB db = new NoteDB(this);
-        Note[] notes = db.getAll();
-
-        LinearLayout layout = (LinearLayout) findViewById(R.id.notes);
-        for (Note note : notes) {
-            TextView text = new TextView(this);
-            text.setText(note.getTitle());
-            text.setWidth(ActionBar.LayoutParams.MATCH_PARENT);
-            text.setBackgroundColor(Color.CYAN);
-            layout.addView(text);
-        }
-
         ImageButton addNoteBtn = (ImageButton) findViewById(R.id.add_note_button);
         addNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,25 +53,41 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        showNotes();
+
+        Intent intent = getIntent();
+        if (intent.getBooleanExtra("newNoteNeeded", false)) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().add(R.id.frag_container, new NewNoteFragment(), null).commit();
+        }
     }
 
-//    public void delDB(View view) {
-//        this.deleteDatabase("coursedb");
-//    }
+    public void showNotes() {
+        Log.d("LOG", "called");
 
-//    public void addButton(View view) {
-//        LinearLayout layout = (LinearLayout) findViewById(R.id.courses);
-//
-//        layout.removeAllViews();
-//
-//        NoteDB db = new NoteDB(this);
-//        String[] courses = db.getCourses();
-//        for (String s : courses) {
-//            Button button = new Button(this);
-//            button.setPadding(5, 5, 5, 5);
-//            button.setLayoutParams(new LinearLayout.LayoutParams(100, 100));
-//            button.setText(s);
-//            layout.addView(button);
-//        }
-//    }
+        NoteDB db = new NoteDB(this);
+        Note[] notes = db.getAll();
+        Log.d("LOG", Integer.toString(notes.length));
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.notes);
+        for (Note note : notes) {
+            Log.d("LOG", note.getTitle());
+            TextView text = new TextView(this);
+            text.setText(note.getTitle());
+            text.setWidth(ActionBar.LayoutParams.MATCH_PARENT);
+            text.setBackgroundColor(Color.CYAN);
+
+            text.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), ViewNote.class);
+                    intent.putExtra("noteId", note.getId());
+                    startActivity(intent);
+                }
+            });
+
+            layout.addView(text);
+        }
+    }
 }

@@ -13,9 +13,7 @@ import androidx.annotation.Nullable;
 import com.geckolabs.notes.PicNoteModel;
 
 public class MediaNotesDB extends DBBase {
-
-    private static final String DB_NAME = "NoteDB";
-    private static final int DB_VERSION = 1;
+    
     private static final String TABLE_NAME = "MediaNote";
     private static final String ID = "id";
     private static final String TITLE = "title";
