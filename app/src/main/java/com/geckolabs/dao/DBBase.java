@@ -3,6 +3,7 @@ package com.geckolabs.dao;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.MediaStore;
 
 public class DBBase extends SQLiteOpenHelper {
     // creating a constant variables for our database.
@@ -20,6 +21,7 @@ public class DBBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         NoteDB.createTableNote(db);
+        MediaNotesDB.createTablePictureNote(db);
     }
 
     @Override

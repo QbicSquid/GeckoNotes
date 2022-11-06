@@ -30,7 +30,7 @@
     <string name="create_picture">Creating Picture Card</string>
     <string name="add_title">+ Add Title</string>
     <string name="add_description">+ Add Description</string>
-    <string name="Create_voice_note">Creating Voice Note</string>
+    <string name="Create_voice_note">Creating Audio Note</string>
 
     <string name="quiz">Quiz</string>
     <string name="quiz_question">Add Question</string>
@@ -56,4 +56,9 @@
     <string name="gecko">Gecko</string>
     <string name="labs">Labs</string>
     <string name="notes">Notes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="done">Done</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

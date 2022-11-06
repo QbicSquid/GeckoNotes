@@ -1,5 +1,6 @@
 package com.geckolabs.notes;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActionBar;
@@ -8,12 +9,16 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.content.Intent;
 import android.widget.TextView;
 
 import com.geckolabs.dao.NoteDB;
 import com.geckolabs.dao.model.Note;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
