@@ -37,17 +37,13 @@ public class WrittenAnsView extends AppCompatActivity {
 
         Integer questionId;
         Intent intent = getIntent();
-        questionId = intent.getIntExtra("queID",0);
+        questionId = intent.getIntExtra("queID", 0);
         QuestionModel questionModel = db.getAQuizQuestion(questionId);
-        Log.d("Question Id", String.valueOf(questionId));
-        Log.d("QuestionType", questionModel.getqType());
-        Log.d("Question", questionModel.getqText());
 
         queDisplay.setText(questionModel.getqText());
 
         AnswerModel answerModel = db.getAnswerForQuestion(questionId);
         Integer ansID = answerModel.getAnsID();
-        //String answer = String.valueOf(answerModel.getqAns());
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,8 +55,7 @@ public class WrittenAnsView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(WrittenAnsView.this, EditQuizAns.class);
-                intent.putExtra("answerID",ansID);
-                Log.d("WrittenAnsIDTEST", String.valueOf(ansID));
+                intent.putExtra("answerID", ansID);
                 startActivity(intent);
             }
         });

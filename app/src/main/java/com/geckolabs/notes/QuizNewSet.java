@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class QuizNewSet extends AppCompatActivity {
 
     FloatingActionButton addQuiz;
-    ImageButton saveQuizSet;
     TextView quizSetTitle;
 
     @Override
@@ -31,9 +30,7 @@ public class QuizNewSet extends AppCompatActivity {
 
 
         addQuiz = findViewById(R.id.add_quiz);
-        saveQuizSet = findViewById(R.id.save_quiz_Set);
         quizSetTitle = findViewById(R.id.quiz_set_title);
-        //quizList = findViewById(R.id.quizList);
 
         addQuiz.setOnClickListener((v) -> startActivity(new Intent(QuizNewSet.this, Quizq.class)));
 

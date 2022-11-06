@@ -37,13 +37,9 @@ public class QuestionSetView extends AppCompatActivity {
         String quizTitleID;
         Intent intent2 = getIntent();
         quizTitleID = intent2.getStringExtra("quizTitleID");
-        Log.d("Titles", quizTitleID);
         QuizModel quizModel = db.getSingleQuizID(quizTitleID);
 
         QuestionModel questionModel = db.getSingleQuizQuestions(quizModel.getQuizId());
-        Log.d("CheckforQuizId", String.valueOf(questionModel.getqId()));
-        Log.d("CHECKFORID", String.valueOf(quizModel.getQuizId()));
-
         Integer quizId = Integer.valueOf(quizModel.getQuizId());
 
         quizTitle.setText(quizTitleID);
@@ -54,7 +50,6 @@ public class QuestionSetView extends AppCompatActivity {
         quiz.setTextSize(20);
         quiz.setLayoutParams(new LinearLayout.LayoutParams(600, 100));
         String questionId = String.valueOf(questionModel.getqId());
-        Log.d("checkkkk",questionId);
         quiz.setText(questionId);
         layout.addView(quiz);
         Integer queId = questionModel.getqId();
@@ -62,15 +57,12 @@ public class QuestionSetView extends AppCompatActivity {
 
         AnswerModel answerModel = db.getAnswerForQuestion(queId);
         Integer ansID = Integer.valueOf(answerModel.getAnsID());
-        Log.d("AnsIDJava", String.valueOf(ansID));
-
-        Integer ansId ;
+        Integer ansId;
 
         deleteQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db.deleteQuizDB(quizId, queId, ansID);
-                Log.d("quiz ID to delete", String.valueOf(quizModel.getQuizId()));
                 Intent intent = new Intent(QuestionSetView.this, QuizNewSet.class);
             }
 
@@ -81,7 +73,6 @@ public class QuestionSetView extends AppCompatActivity {
     private void directQuestions(Integer queId) {
         Intent intent = new Intent(QuestionSetView.this, WrittenAnsView.class);
         intent.putExtra("queID", queId);
-        Log.d("PASS que ID", String.valueOf(queId));
         startActivity(intent);
     }
 }

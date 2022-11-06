@@ -19,7 +19,6 @@ public class Quizq extends AppCompatActivity {
 
     FloatingActionButton quizQ;
     TextView quizTitle;
-    ImageButton saveQuiz;
     private Object view;
 
     @Override
@@ -29,7 +28,6 @@ public class Quizq extends AppCompatActivity {
 
         QuizDAO db = new QuizDAO(this);
 
-        saveQuiz = findViewById(R.id.save_quiz_Set);
         quizQ = findViewById(R.id.quizQ);
         quizTitle = findViewById(R.id.question_set_title);
 

@@ -46,7 +46,7 @@ public class WrittenAns extends Fragment {
 
         Bundle bundle = this.getArguments();
         Integer questID = Math.toIntExact((bundle.getLong("questionID")));
-        Log.d("questionIdWrittenANS", String.valueOf(questID));
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
