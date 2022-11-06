@@ -2,6 +2,7 @@ package com.geckolabs.notes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,11 @@ public class MediaTestingActivity extends AppCompatActivity {
             }
         });
 
+        Log.d("note ID MTA", Integer.toString(
+                this.getIntent().getIntExtra("noteId", 20)
+        ));
+        int noteId = this.getIntent().getIntExtra("noteId", 20);
+
         Button btnShowPicNote;
         EditText picNoteId;
         btnShowPicNote = findViewById(R.id.btnShowPicNote);
@@ -34,10 +40,10 @@ public class MediaTestingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaTestingActivity.this, MediaNotesActivity.class);
+                intent.putExtra("noteId", noteId);
                 startActivity(intent);
             }
         });
-
 
     }
 }

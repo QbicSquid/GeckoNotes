@@ -1,5 +1,6 @@
 package com.geckolabs.notes;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -60,7 +61,10 @@ public class viewPictureNote extends Fragment {
         imgBtnDelete = view.findViewById(R.id.imgBtnDelete);
         imgBtnUpdate = view.findViewById(R.id.imgBtnUpdate);
 
-        picNoteId = 24;
+        picNoteId = this.getActivity().getIntent().getIntExtra("noteId", 20);
+        Log.d("note ID fragment", Integer.toString(
+                this.getActivity().getIntent().getIntExtra("noteId", 20)
+        ));
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);

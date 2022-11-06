@@ -21,6 +21,10 @@ public class MediaNotesActivity extends AppCompatActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().add(R.id.Container,new viewPictureNote(),null).commit();
         }
+
+        Log.d("note ID MNA", Integer.toString(
+                this.getIntent().getIntExtra("noteId", 20)
+        ));
     }
 
 //    @Override
