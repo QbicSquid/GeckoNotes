@@ -10,13 +10,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geckolabs.dao.MediaNotesDB;
 import com.geckolabs.dao.NoteDB;
 import com.geckolabs.dao.model.Note;
 
-public class ViewNote extends AppCompatActivity {
+public class ViewNoteActivity extends AppCompatActivity {
     int noteId;
 
     @Override
@@ -48,19 +49,8 @@ public class ViewNote extends AppCompatActivity {
             }
         });
 
-        // add a picture
-        noteId = getIntent().getIntExtra("noteId", 0);
-        Button addPicBtn = (Button) findViewById(R.id.add_picture_btn);
-        addPicBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PictureNoteActivity.class);
-                intent.putExtra("noteId", noteId);
-                startActivity(intent);
-            }
-        });
-
         // get note information
+        noteId = getIntent().getIntExtra("noteId", 0);
         NoteDB noteDB = new NoteDB(this);
         Note note =  noteDB.getOne(noteId);
         TextView title = findViewById(R.id.note_name_view);
@@ -76,6 +66,24 @@ public class ViewNote extends AppCompatActivity {
             viewPictureNote fragment = new viewPictureNote();
             fragment.setArguments(bundle);
             fragmentManager.beginTransaction().add(R.id.view_note_picture_frame, fragment, null).commit();
+        } else {
+            // Add Picture
+            LinearLayout btnContainer = findViewById(R.id.view_note_button_contianer);
+            Button addPicButton = new Button(this);
+            addPicButton.setText("Add Picture");
+            addPicButton.setTextColor(Color.WHITE);
+            addPicButton.setBackgroundResource(R.drawable.gecko_button1);
+            btnContainer.addView(addPicButton);
+
+            // Event Listener for adding a picture
+            addPicButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), PictureNoteActivity.class);
+                    intent.putExtra("noteId", noteId);
+                    startActivity(intent);
+                }
+            });
         }
     }
 

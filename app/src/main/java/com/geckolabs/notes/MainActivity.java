@@ -1,19 +1,14 @@
 package com.geckolabs.notes;
 
-import androidx.annotation.ColorRes;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.content.Intent;
@@ -21,8 +16,6 @@ import android.widget.TextView;
 
 import com.geckolabs.dao.NoteDB;
 import com.geckolabs.dao.model.Note;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             text.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getApplicationContext(), ViewNote.class);
+                    Intent intent = new Intent(getApplicationContext(), ViewNoteActivity.class);
                     intent.putExtra("noteId", note.getId());
                     startActivity(intent);
                 }

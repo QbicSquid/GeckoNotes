@@ -23,7 +23,7 @@
             android:name=".NewNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewNote"
+            android:name=".ViewNoteActivity"
             android:exported="false" />
         <activity
             android:name=".UpdatePicNoteActivity"
