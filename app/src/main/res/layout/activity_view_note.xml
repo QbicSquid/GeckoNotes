@@ -15,25 +15,43 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="513dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_name_view">
+        app:layout_constraintTop_toBottomOf="@+id/note_name_view"
+        tools:ignore="SpeakableTextPresentCheck">
 
-        <LinearLayout
+        <FrameLayout
+            android:id="@+id/view_note_picture_frame"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content">
 
-        </LinearLayout>
+        </FrameLayout>
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/view_note_frame_layout"
+    <Button
+        android:id="@+id/add_picture_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/add_picture"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent">
 
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/view_note_button_contianer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="533dp"></LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

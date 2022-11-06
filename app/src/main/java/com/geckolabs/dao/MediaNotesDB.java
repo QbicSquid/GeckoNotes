@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import com.geckolabs.notes.PicNoteModel;
 
 public class MediaNotesDB extends DBBase {
-    
+
     private static final String TABLE_NAME = "MediaNote";
     private static final String ID = "id";
     private static final String TITLE = "title";
@@ -41,7 +41,7 @@ public class MediaNotesDB extends DBBase {
 
 
 
-    public void addNewAudioNote(String title,String description,String mediaPath) {
+    public void addNewAudioNote(String title,String description,String mediaPath, int noteId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -50,7 +50,7 @@ public class MediaNotesDB extends DBBase {
         values.put(TITLE,title );
         values.put(DESCRIPTION,description);
         values.put(TYPE,"audio");
-        values.put(NOTE_ID,1);
+        values.put(NOTE_ID, noteId);
         values.put(MEDIA_FILE,mediaPath);
 
         db.insert(TABLE_NAME, null, values);
@@ -113,6 +113,31 @@ public class MediaNotesDB extends DBBase {
 
         db.close();
         return status;
+    }
+
+    // Find picture with note id
+    public PicNoteModel getPicbyNoteId(int noteId) {
+        Log.d("LOG noteID", Integer.toString(noteId));
+        SQLiteDatabase db = getReadableDatabase();
+
+        String query = "SELECT * FROM " + TABLE_NAME +" WHERE  noteId="+ noteId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        Log.d("LOG", "HERE 1");
+        if (!cursor.moveToFirst()) return null;
+        Log.d("LOG", "HERE 2");
+
+        PicNoteModel picNoteModel = new PicNoteModel(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getInt(4),
+                cursor.getString(5)
+        );
+        Log.d("LOG", "HERE 3");
+        return picNoteModel;
     }
 
     // Delete item

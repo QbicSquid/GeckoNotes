@@ -35,6 +35,7 @@ import java.util.Date;
 
 public class PictureNoteActivity extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
+    int noteId;
     ImageView picView;
     Bitmap selectedImageBitmap;
     ImageButton photoButton;
@@ -51,6 +52,8 @@ public class PictureNoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        noteId = getIntent().getIntExtra("noteId", 0);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture_note);
 
@@ -90,7 +93,7 @@ public class PictureNoteActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("Log1","in On click");
 //                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
-                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath);
+                db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath, noteId);
                 Toast.makeText(PictureNoteActivity.this,"Picture Note Added",Toast.LENGTH_SHORT).show();
             }
         });
@@ -139,7 +142,7 @@ public class PictureNoteActivity extends AppCompatActivity {
         txtAddAudioDescription = view.findViewById(R.id.txtAddAudioDescription);
         btnAudioNoteDone = view.findViewById(R.id.btnAudioNoteDone);
 //        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),selectedImageUri.toString());
-        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath);
+        db.addNewAudioNote(txtAddAudioTitle.getText().toString(),txtAddAudioDescription.getText().toString(),currentPhotoPath, noteId);
 
     }
 //Line Breaker...............................

@@ -60,7 +60,7 @@ public class viewPictureNote extends Fragment {
         imgBtnDelete = view.findViewById(R.id.imgBtnDelete);
         imgBtnUpdate = view.findViewById(R.id.imgBtnUpdate);
 
-        picNoteId = 24;
+        picNoteId = this.getArguments().getInt("noteId");
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);
@@ -98,7 +98,6 @@ public class viewPictureNote extends Fragment {
                 Intent intent = new Intent(getActivity(),UpdatePicNoteActivity.class);
                 intent.putExtra("id",picNoteModel.getId());
                 startActivity(intent);
-
             }
         });
 
