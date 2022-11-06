@@ -34,7 +34,6 @@ public class NewQuizQ extends AppCompatActivity {
 
     Bundle bundle = new Bundle();
 
-    //final long[] questionID = {0};
     long questions = 0;
     long queId;
 
@@ -66,7 +65,7 @@ public class NewQuizQ extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 String item = parent.getItemAtPosition(position).toString();
-                //Toast.makeText(adapterItems.getContext(),"Item: "+item,Toast.LENGTH_SHORT).show();
+
                 switch (position) {
                     case 0:
                         selectFragment(checkboxAnsAction);
@@ -89,13 +88,18 @@ public class NewQuizQ extends AppCompatActivity {
                 Intent intent = getIntent();
                 quizId = Integer.valueOf((int) intent.getLongExtra("quizID", 0));
                 queId = db.addNewQuestion(autoCompleteTxt.getText().toString(), question.getText().toString(), quizId);
-                //questionID[0] = queId;
                 questions = queId;
-                Log.d("quizzz", String.valueOf(quizId));
-                Log.d("queeee", String.valueOf(queId));
 
             }
 
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NewQuizQ.this, QuizNewSet.class);
+                startActivity(intent);
+            }
         });
     }
 
@@ -105,8 +109,7 @@ public class NewQuizQ extends AppCompatActivity {
         bundle.putLong("questionID", questions);
 
         fragment.setArguments(bundle);
-        Log.d("NewQuizQ_questionID", String.valueOf(questions));
-        Log.d("NewQuizQ_queIDCheck", String.valueOf(queId));
+
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.ansType, fragment);
         fragmentTransaction.commit();

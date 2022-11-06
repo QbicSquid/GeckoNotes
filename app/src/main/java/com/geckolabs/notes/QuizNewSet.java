@@ -21,7 +21,6 @@ import java.util.ArrayList;
 public class QuizNewSet extends AppCompatActivity {
 
     FloatingActionButton addQuiz;
-    ImageButton saveQuizSet;
     TextView quizSetTitle;
 
     @Override
@@ -29,11 +28,8 @@ public class QuizNewSet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_new_set);
 
-
         addQuiz = findViewById(R.id.add_quiz);
-        saveQuizSet = findViewById(R.id.save_quiz_Set);
         quizSetTitle = findViewById(R.id.quiz_set_title);
-        //quizList = findViewById(R.id.quizList);
 
         addQuiz.setOnClickListener((v) -> startActivity(new Intent(QuizNewSet.this, Quizq.class)));
 
@@ -52,7 +48,6 @@ public class QuizNewSet extends AppCompatActivity {
 
         }
 
-
     }
 
     private void directQuestions(String s) {
@@ -61,6 +56,5 @@ public class QuizNewSet extends AppCompatActivity {
         startActivity(intent);
 
     }
-
 
 }

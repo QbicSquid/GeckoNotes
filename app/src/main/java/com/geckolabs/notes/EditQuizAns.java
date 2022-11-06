@@ -26,22 +26,22 @@ public class EditQuizAns extends AppCompatActivity {
         edAnswer = findViewById(R.id.correctAns);
         saveEditAns = findViewById(R.id.saveAns);
 
-        Log.d("Hello","Hello1");
         Integer answID;
         Intent intent = getIntent();
         answID = intent.getIntExtra("answerID", 0);
-        Log.d("EditQuizTEST", String.valueOf(answID));
+
 
         AnswerModel answerModel = db.getQuestionAnswer(answID);
         edAnswer.setText(answerModel.getqAns());
         String testdbAnswer = answerModel.getqAns();
-        Log.d("DBtestAnswerONEdit", testdbAnswer);
 
         saveEditAns.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 answerModel.setqAns(edAnswer.getText().toString());
                 db.updateAns(answerModel);
+                Intent intent = new Intent(EditQuizAns.this, QuizNewSet.class);
+                startActivity(intent);
             }
 
         });

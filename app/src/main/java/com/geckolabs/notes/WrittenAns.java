@@ -1,5 +1,6 @@
 package com.geckolabs.notes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,7 +47,7 @@ public class WrittenAns extends Fragment {
 
         Bundle bundle = this.getArguments();
         Integer questID = Math.toIntExact((bundle.getLong("questionID")));
-        Log.d("questionIdWrittenANS", String.valueOf(questID));
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +55,6 @@ public class WrittenAns extends Fragment {
             }
 
         });
-
 
     }
 
