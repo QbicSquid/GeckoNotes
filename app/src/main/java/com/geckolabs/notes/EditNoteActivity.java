@@ -41,7 +41,7 @@ public class EditNoteActivity extends AppCompatActivity {
 //        id= Integer.valueOf((getIntent().getExtras().getString("id")));
 
         text.setText(getIntent().getStringExtra("text"));
-        model = new NoteModel(5,"sample");
+        model = new NoteModel(1,"sample");
 
         Update.setOnClickListener((v) -> {
 //            model.setId(id);
