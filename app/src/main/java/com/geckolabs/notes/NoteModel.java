@@ -1,8 +1,8 @@
 package com.geckolabs.notes;
 
 public class NoteModel {
-    private int id;
-    private String text;
+    public int id;
+    public String text;
 
     //constructors
     public NoteModel(int id, String text) {
@@ -10,8 +10,6 @@ public class NoteModel {
         this.text = text;
     }
 
-    public NoteModel() {
-    }
 
     //toSting is necessary for printing the contents of a class object
     @Override

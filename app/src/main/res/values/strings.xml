@@ -16,11 +16,23 @@
     <string name="txt_back">Back</string>
     <string name="txt_save">Save</string>
 
+
+
     <string name="txtview2">Add List</string>
+    <string name="list_save">Save</string>
+    <string name="list_del">Delete</string>
+    <string name="list_update">Update</string>
     <string name="list_back">Back</string>
+    <string name="list_view">view</string>
 
     <string name="txtview3">Add Table</string>
     <string name="table_back">Back</string>
+
+    <string name="editsavebtn">Save</string>
+    <string name="editdelbtn">Delete</string>
+
+
+
 
 
 </resources>

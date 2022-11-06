@@ -1,14 +1,16 @@
 package com.geckolabs.dao;
+
+
+import static android.content.ContentValues.TAG;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-
+import android.util.Log;
 
 import com.geckolabs.notes.NoteModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,12 +30,11 @@ public class TextDB extends SQLiteOpenHelper{
     //this is calls the first time a database is accessed. there should be code in here to create a new database
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query = "CREATE TABLE " + TABLE_NAME + " ("
-                + NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + NOTE_TEXT + " TEXT)";
+        String query = "CREATE TABLE " + TABLE_NAME + " (" + NOTE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +NOTE_TEXT + " TEXT)";
 
         sqLiteDatabase.execSQL(query);
     }
+
 
     public boolean addNewNote(NoteModel noteModel) {
 
@@ -41,70 +42,57 @@ public class TextDB extends SQLiteOpenHelper{
         ContentValues cv = new ContentValues();
 
         cv.put(NOTE_TEXT, noteModel.getText());
+        //cv.put(NOTE_ID, noteModel.getId());
 
-         long insert = sqLiteDatabase.insert(TABLE_NAME, null, cv);
+        long insert = sqLiteDatabase.insert(TABLE_NAME, null, cv);
+
         if(insert == -1){
             return false;
         }
         else{
             return true;
         }
-
-//        sqLiteDatabase.close();
     }
-    public boolean deleteOne(NoteModel noteModel){
-        //find noteModel in db .if found delete it and return true
-        //if not found return false
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        String queryString = "DELETE FROM " + TABLE_NAME + " WHERE " + NOTE_ID + " = " + noteModel.getId();
 
+    public Cursor viewData(){
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+
+        return cursor;
+    }
+
+    public boolean DeleteOne(NoteModel noteModel){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String queryString = " DELETE FROM " + TABLE_NAME + " WHERE " + NOTE_ID + " = " + noteModel.getId();
         Cursor cursor = sqLiteDatabase.rawQuery(queryString, null);
 
         if(cursor.moveToFirst()){
             return true;
-        }
-        else{
+        }else{
             return false;
         }
     }
+    public boolean updateOne(NoteModel noteModel) {
 
-//when the note comes up and read
-    public List<NoteModel> getEveryone() {
-        List<NoteModel>returnList = new ArrayList<>();
-
-        //get data from database
-        String queryString = "SELECT * FROM " + TABLE_NAME;
-        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.rawQuery(queryString,null);
-
-        if(cursor.moveToFirst()){
-            //loop through the cursor(result set) and create new note objects. Put them into the return list.
-            do{
-                int id = cursor.getInt(0);
-                String des = cursor.getString(0);
-
-                NoteModel newNote = new NoteModel(id,des);
-                returnList.add(newNote);
-            } while(cursor.moveToNext());
-        }
-        else{
-            //false do not add anything
-        }
-        //close both cursor and db
-        cursor.close();
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        Log.d("in update one",noteModel.getText());
+        cv.put(NOTE_TEXT, noteModel.getText());
+        int status = sqLiteDatabase.update(TABLE_NAME,cv,NOTE_ID +" =?",
+                new String[]{String.valueOf(noteModel.getId())});
         sqLiteDatabase.close();
-        return returnList;
+        if(status==-1){
+            return false;
+        }else{
+            return true;
+        }
     }
-
-//delete the note
-
-
-
-
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
     sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     onCreate(sqLiteDatabase);
     }
+
+
 }
