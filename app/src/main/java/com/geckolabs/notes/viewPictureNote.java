@@ -61,6 +61,7 @@ public class viewPictureNote extends Fragment {
         imgBtnUpdate = view.findViewById(R.id.imgBtnUpdate);
 
         picNoteId = this.getArguments().getInt("noteId");
+        Log.d("NOTE ID 7:16", Integer.toString(picNoteId));
 
         //Get Details From DB And Display
         PicNoteModel picNoteModel= db.getSinglePicNote(picNoteId);

@@ -33,7 +33,13 @@
     <string name="Create_voice_note">Creating Audio Note</string>
 
     <string name="quiz">Quiz</string>
-    <string name="quiz_question">Add Question</string>
+    <string name="quiz_question">Question</string>
+    <string name="select">Select type</string>
+    <string-array name="ansChoice">
+        <item>Checkbox</item>
+        <item>Radio</item>
+        <item>Written</item>
+    </string-array>
     <string name="quiz_checkbox">Checkbox</string>
     <string name="quiz_radio">Radio</string>
     <string name="quiz_written">Written</string>
@@ -52,13 +58,25 @@
     <string name="task_date">Date</string>
     <string name="task_time">Time</string>
     <string name="task_remind">Remind Me</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_quiz_set">QuizSet</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
     <string name="gecko">Gecko</string>
     <string name="labs">Labs</string>
     <string name="notes">Notes</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="done">Done</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="addAns">addAns</string>
+    <string name="ansCorrect">Set Answer</string>
+    <string name="addq">Add Question</string>
+    <string name="submitAns">Submit Answer</string>
+    <string name="viewAns">View Answer</string>
 </resources>

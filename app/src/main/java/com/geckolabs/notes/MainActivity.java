@@ -47,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton quizButton = (ImageButton) findViewById(R.id.quizes_button);
+        quizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), QuizNewSet.class);
+                startActivity(intent);
+            }
+        });
+
         showNotes();
 
         Intent intent = getIntent();
@@ -84,3 +93,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="6dp"
+    tools:context=".QuizNewSet">
+
+    <RelativeLayout
+        android:id="@+id/quizzes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/quiz_set_title"
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:gravity="center"
+            android:text="Quiz"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_add_circle_outline_24" />
+
+    <LinearLayout
+        android:id="@+id/quizList"
+        android:layout_width="373dp"
+        android:layout_height="522dp"
+        android:layout_below="@+id/quizzes"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical"></LinearLayout>
+
+</RelativeLayout>

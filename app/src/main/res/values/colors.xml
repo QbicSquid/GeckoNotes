@@ -6,4 +6,7 @@
     <color name="brown">#723D46</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_blue">#FF00BBF9</color>
+    <color name="cyan">#FF00F5D4</color>
+    <color name="purple">#FF9B50E5</color>
 </resources>

@@ -86,6 +86,7 @@ public class NewNoteFragment extends Fragment {
 
                 NoteDB db = new NoteDB(getContext());
                 long noteId = db.insert(new Note(noteName, noteGroup, 0));
+                Log.d("NOTE ID 7:21", Long.toString(noteId));
             }
         });
     }
